@@ -123,6 +123,7 @@ public class AjoutAppareils extends javax.swing.JFrame {
     private void jToggleButtonValiderAppareilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButtonValiderAppareilMouseClicked
         // TODO add your handling code here:
         setVisible(false);
+        //Quitter fenetre
     }//GEN-LAST:event_jToggleButtonValiderAppareilMouseClicked
 
     /**
