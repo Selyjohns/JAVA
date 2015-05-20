@@ -389,9 +389,9 @@ public class Interface extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(41, Short.MAX_VALUE)
+                .addContainerGap(29, Short.MAX_VALUE)
                 .addComponent(jLabelTitreInterface)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jToggleButtonQuitter)
@@ -442,7 +442,7 @@ public class Interface extends javax.swing.JFrame {
 
     private void jButtonAddAppMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAddAppMouseClicked
         // TODO add your handling code here:
-        AjoutAppareils addAppareil = new AjoutAppareils();
+        AjoutAppareil addAppareil = new AjoutAppareil();
         addAppareil.setVisible(true);
     }//GEN-LAST:event_jButtonAddAppMouseClicked
 
