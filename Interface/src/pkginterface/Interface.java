@@ -61,6 +61,7 @@ public class Interface extends javax.swing.JFrame {
         jLabelChoixSalleApp = new javax.swing.JLabel();
         jMenuDeroulantAppSalle = new javax.swing.JComboBox();
         jLabelTitreInterface = new javax.swing.JLabel();
+        jToggleButtonQuitter = new javax.swing.JToggleButton();
 
         jInternalFrame1.setVisible(true);
 
@@ -93,6 +94,16 @@ public class Interface extends javax.swing.JFrame {
         jLabelTitreLocal.setText("Liste des locaux");
 
         jButtonAddLocal.setText("Ajouter un local");
+        jButtonAddLocal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonAddLocalMouseClicked(evt);
+            }
+        });
+        jButtonAddLocal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddLocalActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -177,6 +188,11 @@ public class Interface extends javax.swing.JFrame {
         jLabelInfoSalle.setText("Informations sur la salle :");
 
         jButtonAddSalle.setText("Ajouter une salle");
+        jButtonAddSalle.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonAddSalleMouseClicked(evt);
+            }
+        });
 
         jLabelChoixLocalSallle.setText("Sélectionner le local :");
 
@@ -259,6 +275,11 @@ public class Interface extends javax.swing.JFrame {
         jLabelInfoApp.setText("Informations sur l'appareil :");
 
         jButtonAddApp.setText("Ajouter un appareil");
+        jButtonAddApp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonAddAppMouseClicked(evt);
+            }
+        });
 
         jLabelLocalApp.setText("Sélectionner le local :");
 
@@ -338,6 +359,13 @@ public class Interface extends javax.swing.JFrame {
         jLabelTitreInterface.setFont(new java.awt.Font("Times New Roman", 0, 36)); // NOI18N
         jLabelTitreInterface.setText("Interface de gestion ");
 
+        jToggleButtonQuitter.setText("Quitter");
+        jToggleButtonQuitter.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jToggleButtonQuitterMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -345,21 +373,29 @@ public class Interface extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 675, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(188, 188, 188)
-                        .addComponent(jLabelTitreInterface, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 675, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(188, 188, 188)
+                                .addComponent(jLabelTitreInterface, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jToggleButtonQuitter)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(47, Short.MAX_VALUE)
+                .addContainerGap(41, Short.MAX_VALUE)
                 .addComponent(jLabelTitreInterface)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jToggleButtonQuitter)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -380,6 +416,35 @@ public class Interface extends javax.swing.JFrame {
     private void jMenuDeroulantSalleAppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuDeroulantSalleAppActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuDeroulantSalleAppActionPerformed
+
+    private void jButtonAddLocalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddLocalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonAddLocalActionPerformed
+
+    private void jButtonAddLocalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAddLocalMouseClicked
+        // TODO add your handling code here:
+        AjoutLocal addLocal = new AjoutLocal();
+        addLocal.setVisible(true);
+        //this.setVisible(false);
+        
+    }//GEN-LAST:event_jButtonAddLocalMouseClicked
+
+    private void jButtonAddSalleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAddSalleMouseClicked
+        // TODO add your handling code here:
+        AjoutSalle addSalle = new AjoutSalle();
+        addSalle.setVisible(true);
+    }//GEN-LAST:event_jButtonAddSalleMouseClicked
+
+    private void jToggleButtonQuitterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButtonQuitterMouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jToggleButtonQuitterMouseClicked
+
+    private void jButtonAddAppMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAddAppMouseClicked
+        // TODO add your handling code here:
+        AjoutAppareils addAppareil = new AjoutAppareils();
+        addAppareil.setVisible(true);
+    }//GEN-LAST:event_jButtonAddAppMouseClicked
 
     /**
      * @param args the command line arguments
@@ -452,5 +517,6 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JToggleButton jToggleButtonQuitter;
     // End of variables declaration//GEN-END:variables
 }

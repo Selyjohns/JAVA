@@ -47,26 +47,37 @@
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTabbedPane1" min="-2" pref="675" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jTabbedPane1" min="-2" pref="675" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="188" max="-2" attributes="0"/>
+                              <Component id="jLabelTitreInterface" min="-2" pref="295" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="188" max="-2" attributes="0"/>
-                      <Component id="jLabelTitreInterface" min="-2" pref="295" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="jToggleButtonQuitter" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="47" max="32767" attributes="0"/>
+              <EmptySpace pref="41" max="32767" attributes="0"/>
               <Component id="jLabelTitreInterface" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jTabbedPane1" min="-2" pref="295" max="-2" attributes="0"/>
-              <EmptySpace pref="34" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jToggleButtonQuitter" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -204,6 +215,10 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Ajouter un local"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonAddLocalMouseClicked"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAddLocalActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -341,6 +356,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ajouter une salle"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonAddSalleMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelChoixLocalSallle">
               <Properties>
@@ -505,6 +523,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ajouter un appareil"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonAddAppMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelLocalApp">
               <Properties>
@@ -542,6 +563,14 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Interface de gestion "/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JToggleButton" name="jToggleButtonQuitter">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Quitter"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jToggleButtonQuitterMouseClicked"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
