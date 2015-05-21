@@ -31,35 +31,43 @@ public class AjoutLocal extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabelAddLocal = new javax.swing.JLabel();
         jLabelNomLocal = new javax.swing.JLabel();
-        jTextFieldNomLocal = new javax.swing.JTextField();
+        AjoutLocal_TextNom = new javax.swing.JTextField();
         jLabelDescriptionLocal = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextAreaDescriptionLocal = new javax.swing.JTextArea();
+        AjoutLocal_TextDescription = new javax.swing.JTextArea();
         jLabelLieuLocal = new javax.swing.JLabel();
-        jTextFieldLieuLocal = new javax.swing.JTextField();
-        jToggleButtonValiderLocal = new javax.swing.JToggleButton();
+        AjoutLocal_TextLieu = new javax.swing.JTextField();
+        AjoutLocal_ButtonValider = new javax.swing.JToggleButton();
+        AjoutLocal_ButtonQuitter = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabelAddLocal.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        jLabelAddLocal.setText("Ajout Local");
+        jLabelAddLocal.setText("Ajout d'un local");
 
         jLabelNomLocal.setText("Nom :");
 
         jLabelDescriptionLocal.setText("Description :");
 
-        jTextAreaDescriptionLocal.setColumns(20);
-        jTextAreaDescriptionLocal.setRows(5);
-        jScrollPane1.setViewportView(jTextAreaDescriptionLocal);
+        AjoutLocal_TextDescription.setColumns(20);
+        AjoutLocal_TextDescription.setRows(5);
+        jScrollPane1.setViewportView(AjoutLocal_TextDescription);
 
         jLabelLieuLocal.setText("Lieu :");
 
-        jToggleButtonValiderLocal.setText("Valider");
-        jToggleButtonValiderLocal.addMouseListener(new java.awt.event.MouseAdapter() {
+        AjoutLocal_ButtonValider.setText("Valider");
+        AjoutLocal_ButtonValider.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jToggleButtonValiderLocalMouseClicked(evt);
+                AjoutLocal_ButtonValiderMouseClicked(evt);
+            }
+        });
+
+        AjoutLocal_ButtonQuitter.setText("Annuler");
+        AjoutLocal_ButtonQuitter.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AjoutLocal_ButtonQuitterMouseClicked(evt);
             }
         });
 
@@ -68,20 +76,25 @@ public class AjoutLocal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelNomLocal)
-                            .addComponent(jLabelDescriptionLocal)
-                            .addComponent(jLabelLieuLocal))
-                        .addGap(22, 22, 22)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldNomLocal, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldLieuLocal, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jToggleButtonValiderLocal, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabelAddLocal))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelNomLocal)
+                                    .addComponent(jLabelDescriptionLocal)
+                                    .addComponent(jLabelLieuLocal))
+                                .addGap(22, 22, 22)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(AjoutLocal_TextNom, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(AjoutLocal_TextLieu, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(AjoutLocal_ButtonValider, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabelAddLocal)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(AjoutLocal_ButtonQuitter)))
                 .addContainerGap(63, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -92,27 +105,34 @@ public class AjoutLocal extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelNomLocal)
-                    .addComponent(jTextFieldNomLocal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(AjoutLocal_TextNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelDescriptionLocal)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelLieuLocal)
-                    .addComponent(jTextFieldLieuLocal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jToggleButtonValiderLocal)
-                .addGap(9, 9, 9))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(AjoutLocal_TextLieu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelLieuLocal))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(AjoutLocal_ButtonValider)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(AjoutLocal_ButtonQuitter)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButtonValiderLocalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButtonValiderLocalMouseClicked
+    private void AjoutLocal_ButtonValiderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AjoutLocal_ButtonValiderMouseClicked
         // TODO add your handling code here:
       setVisible(false);
-    }//GEN-LAST:event_jToggleButtonValiderLocalMouseClicked
+    }//GEN-LAST:event_AjoutLocal_ButtonValiderMouseClicked
+
+    private void AjoutLocal_ButtonQuitterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AjoutLocal_ButtonQuitterMouseClicked
+        // TODO add your handling code here:
+        setVisible(false);
+    }//GEN-LAST:event_AjoutLocal_ButtonQuitterMouseClicked
 
     /**
      * @param args the command line arguments
@@ -143,21 +163,23 @@ public class AjoutLocal extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new AjoutLocal().setVisible(true);
             }
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AjoutLocal_ButtonQuitter;
+    private javax.swing.JToggleButton AjoutLocal_ButtonValider;
+    private javax.swing.JTextArea AjoutLocal_TextDescription;
+    private javax.swing.JTextField AjoutLocal_TextLieu;
+    private javax.swing.JTextField AjoutLocal_TextNom;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabelAddLocal;
     private javax.swing.JLabel jLabelDescriptionLocal;
     private javax.swing.JLabel jLabelLieuLocal;
     private javax.swing.JLabel jLabelNomLocal;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextAreaDescriptionLocal;
-    private javax.swing.JTextField jTextFieldLieuLocal;
-    private javax.swing.JTextField jTextFieldNomLocal;
-    private javax.swing.JToggleButton jToggleButtonValiderLocal;
     // End of variables declaration//GEN-END:variables
 }

@@ -31,23 +31,31 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabelNomLocal" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelDescriptionLocal" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelLieuLocal" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldNomLocal" min="-2" pref="166" max="-2" attributes="0"/>
-                          <Component id="jTextFieldLieuLocal" alignment="0" min="-2" pref="166" max="-2" attributes="0"/>
-                          <Component id="jToggleButtonValiderLocal" alignment="0" min="-2" pref="166" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabelNomLocal" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelDescriptionLocal" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelLieuLocal" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="AjoutLocal_TextNom" min="-2" pref="166" max="-2" attributes="0"/>
+                                  <Component id="AjoutLocal_TextLieu" alignment="0" min="-2" pref="166" max="-2" attributes="0"/>
+                                  <Component id="AjoutLocal_ButtonValider" alignment="0" min="-2" pref="166" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="jLabelAddLocal" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="jLabelAddLocal" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="AjoutLocal_ButtonQuitter" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace pref="63" max="32767" attributes="0"/>
           </Group>
@@ -61,21 +69,23 @@
               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabelNomLocal" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldNomLocal" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="AjoutLocal_TextNom" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabelDescriptionLocal" min="-2" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="35" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabelLieuLocal" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldLieuLocal" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jToggleButtonValiderLocal" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="AjoutLocal_TextLieu" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelLieuLocal" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="AjoutLocal_ButtonValider" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="AjoutLocal_ButtonQuitter" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -86,7 +96,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="24" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Ajout Local"/>
+        <Property name="text" type="java.lang.String" value="Ajout d&apos;un local"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelNomLocal">
@@ -94,7 +104,7 @@
         <Property name="text" type="java.lang.String" value="Nom :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldNomLocal">
+    <Component class="javax.swing.JTextField" name="AjoutLocal_TextNom">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelDescriptionLocal">
       <Properties>
@@ -108,7 +118,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextArea" name="jTextAreaDescriptionLocal">
+        <Component class="javax.swing.JTextArea" name="AjoutLocal_TextDescription">
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
@@ -121,14 +131,22 @@
         <Property name="text" type="java.lang.String" value="Lieu :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldLieuLocal">
+    <Component class="javax.swing.JTextField" name="AjoutLocal_TextLieu">
     </Component>
-    <Component class="javax.swing.JToggleButton" name="jToggleButtonValiderLocal">
+    <Component class="javax.swing.JToggleButton" name="AjoutLocal_ButtonValider">
       <Properties>
         <Property name="text" type="java.lang.String" value="Valider"/>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jToggleButtonValiderLocalMouseClicked"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="AjoutLocal_ButtonValiderMouseClicked"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="AjoutLocal_ButtonQuitter">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Annuler"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="AjoutLocal_ButtonQuitterMouseClicked"/>
       </Events>
     </Component>
   </SubComponents>

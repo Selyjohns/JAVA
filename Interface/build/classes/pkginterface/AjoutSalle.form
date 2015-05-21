@@ -133,26 +133,34 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabelNomSalle" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelDescriptionSalle" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelNomLocalSalle" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTextFieldNomSalle" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jToggleButtonValiderSalle" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jComboBoxNomSalle" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabelNomSalle" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelDescriptionSalle" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelNomLocalSalle" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="AjoutSalle_TextNom" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="AjoutSalle_ButtonValider" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="AjoutSalle_ListLocal" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="jLabelAddSalle" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="jLabelAddSalle" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="AjoutSalle_ButtonQuitter" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="129" max="32767" attributes="0"/>
+              <EmptySpace pref="44" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -164,21 +172,23 @@
               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabelNomSalle" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldNomSalle" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="AjoutSalle_TextNom" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabelDescriptionSalle" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jScrollPane2" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="29" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabelNomLocalSalle" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jComboBoxNomSalle" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jToggleButtonValiderSalle" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="AjoutSalle_ListLocal" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelNomLocalSalle" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="AjoutSalle_ButtonValider" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="AjoutSalle_ButtonQuitter" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -189,20 +199,21 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="24" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Ajout Salle"/>
+        <Property name="text" type="java.lang.String" value="Ajout d&apos;une salle"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="jToggleButtonValiderSalle">
+    <Component class="javax.swing.JToggleButton" name="AjoutSalle_ButtonValider">
       <Properties>
         <Property name="text" type="java.lang.String" value="Valider"/>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jToggleButtonValiderSalleMouseClicked"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="AjoutSalle_ButtonValiderMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AjoutSalle_ButtonValiderActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelNomLocalSalle">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Nom Local"/>
+        <Property name="text" type="java.lang.String" value="Local"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelDescriptionSalle">
@@ -215,7 +226,10 @@
         <Property name="text" type="java.lang.String" value="Nom :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldNomSalle">
+    <Component class="javax.swing.JTextField" name="AjoutSalle_TextNom">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AjoutSalle_TextNomActionPerformed"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane2">
       <AuxValues>
@@ -224,7 +238,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextArea" name="jTextAreaDescriptionSalle">
+        <Component class="javax.swing.JTextArea" name="AjoutSalle_TextDescription">
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
@@ -232,7 +246,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JComboBox" name="jComboBoxNomSalle">
+    <Component class="javax.swing.JComboBox" name="AjoutSalle_ListLocal">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
@@ -243,6 +257,15 @@
           </StringArray>
         </Property>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="AjoutSalle_ButtonQuitter">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Annuler"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="AjoutSalle_ButtonQuitterMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AjoutSalle_ButtonQuitterActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

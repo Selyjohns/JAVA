@@ -40,14 +40,15 @@ public class AjoutSalle extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jToggleButtonValider = new javax.swing.JToggleButton();
         jLabelAddSalle = new javax.swing.JLabel();
-        jToggleButtonValiderSalle = new javax.swing.JToggleButton();
+        AjoutSalle_ButtonValider = new javax.swing.JToggleButton();
         jLabelNomLocalSalle = new javax.swing.JLabel();
         jLabelDescriptionSalle = new javax.swing.JLabel();
         jLabelNomSalle = new javax.swing.JLabel();
-        jTextFieldNomSalle = new javax.swing.JTextField();
+        AjoutSalle_TextNom = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextAreaDescriptionSalle = new javax.swing.JTextArea();
-        jComboBoxNomSalle = new javax.swing.JComboBox();
+        AjoutSalle_TextDescription = new javax.swing.JTextArea();
+        AjoutSalle_ListLocal = new javax.swing.JComboBox();
+        AjoutSalle_ButtonQuitter = new javax.swing.JButton();
 
         jFrame1.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -112,47 +113,75 @@ public class AjoutSalle extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabelAddSalle.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        jLabelAddSalle.setText("Ajout Salle");
+        jLabelAddSalle.setText("Ajout d'une salle");
 
-        jToggleButtonValiderSalle.setText("Valider");
-        jToggleButtonValiderSalle.addMouseListener(new java.awt.event.MouseAdapter() {
+        AjoutSalle_ButtonValider.setText("Valider");
+        AjoutSalle_ButtonValider.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jToggleButtonValiderSalleMouseClicked(evt);
+                AjoutSalle_ButtonValiderMouseClicked(evt);
+            }
+        });
+        AjoutSalle_ButtonValider.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AjoutSalle_ButtonValiderActionPerformed(evt);
             }
         });
 
-        jLabelNomLocalSalle.setText("Nom Local");
+        jLabelNomLocalSalle.setText("Local");
 
         jLabelDescriptionSalle.setText("Description :");
 
         jLabelNomSalle.setText("Nom :");
 
-        jTextAreaDescriptionSalle.setColumns(20);
-        jTextAreaDescriptionSalle.setRows(5);
-        jScrollPane2.setViewportView(jTextAreaDescriptionSalle);
+        AjoutSalle_TextNom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AjoutSalle_TextNomActionPerformed(evt);
+            }
+        });
 
-        jComboBoxNomSalle.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        AjoutSalle_TextDescription.setColumns(20);
+        AjoutSalle_TextDescription.setRows(5);
+        jScrollPane2.setViewportView(AjoutSalle_TextDescription);
+
+        AjoutSalle_ListLocal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        AjoutSalle_ButtonQuitter.setText("Annuler");
+        AjoutSalle_ButtonQuitter.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AjoutSalle_ButtonQuitterMouseClicked(evt);
+            }
+        });
+        AjoutSalle_ButtonQuitter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AjoutSalle_ButtonQuitterActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelNomSalle)
-                            .addComponent(jLabelDescriptionSalle)
-                            .addComponent(jLabelNomLocalSalle))
-                        .addGap(22, 22, 22)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane2)
-                            .addComponent(jTextFieldNomSalle)
-                            .addComponent(jToggleButtonValiderSalle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBoxNomSalle, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jLabelAddSalle))
-                .addContainerGap(129, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelNomSalle)
+                                    .addComponent(jLabelDescriptionSalle)
+                                    .addComponent(jLabelNomLocalSalle))
+                                .addGap(22, 22, 22)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jScrollPane2)
+                                    .addComponent(AjoutSalle_TextNom)
+                                    .addComponent(AjoutSalle_ButtonValider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(AjoutSalle_ListLocal, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jLabelAddSalle)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(AjoutSalle_ButtonQuitter)))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,27 +191,46 @@ public class AjoutSalle extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelNomSalle)
-                    .addComponent(jTextFieldNomSalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(AjoutSalle_TextNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelDescriptionSalle)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelNomLocalSalle)
-                    .addComponent(jComboBoxNomSalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jToggleButtonValiderSalle)
-                .addGap(9, 9, 9))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(AjoutSalle_ListLocal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelNomLocalSalle))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(AjoutSalle_ButtonValider)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(AjoutSalle_ButtonQuitter)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButtonValiderSalleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButtonValiderSalleMouseClicked
+    private void AjoutSalle_ButtonValiderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AjoutSalle_ButtonValiderMouseClicked
         // TODO add your handling code here:
         setVisible(false);
-    }//GEN-LAST:event_jToggleButtonValiderSalleMouseClicked
+    }//GEN-LAST:event_AjoutSalle_ButtonValiderMouseClicked
+
+    private void AjoutSalle_ButtonValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AjoutSalle_ButtonValiderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AjoutSalle_ButtonValiderActionPerformed
+
+    private void AjoutSalle_ButtonQuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AjoutSalle_ButtonQuitterActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AjoutSalle_ButtonQuitterActionPerformed
+
+    private void AjoutSalle_TextNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AjoutSalle_TextNomActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AjoutSalle_TextNomActionPerformed
+
+    private void AjoutSalle_ButtonQuitterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AjoutSalle_ButtonQuitterMouseClicked
+        // TODO add your handling code here:
+        setVisible(false);
+    }//GEN-LAST:event_AjoutSalle_ButtonQuitterMouseClicked
 
     /**
      * @param args the command line arguments
@@ -219,7 +267,11 @@ public class AjoutSalle extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox jComboBoxNomSalle;
+    private javax.swing.JButton AjoutSalle_ButtonQuitter;
+    private javax.swing.JToggleButton AjoutSalle_ButtonValider;
+    private javax.swing.JComboBox AjoutSalle_ListLocal;
+    private javax.swing.JTextArea AjoutSalle_TextDescription;
+    private javax.swing.JTextField AjoutSalle_TextNom;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelAddLocal;
@@ -232,11 +284,8 @@ public class AjoutSalle extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextAreaDescription;
-    private javax.swing.JTextArea jTextAreaDescriptionSalle;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextFieldNom;
-    private javax.swing.JTextField jTextFieldNomSalle;
     private javax.swing.JToggleButton jToggleButtonValider;
-    private javax.swing.JToggleButton jToggleButtonValiderSalle;
     // End of variables declaration//GEN-END:variables
 }
