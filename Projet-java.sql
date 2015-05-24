@@ -1,5 +1,3 @@
-﻿CREATE DATABASE "Projet-Java"
-
 CREATE TABLE Locaux
 (
 IDLocal integer primary key,
