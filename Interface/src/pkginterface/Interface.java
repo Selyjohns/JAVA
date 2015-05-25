@@ -47,7 +47,7 @@ public class Interface extends javax.swing.JFrame {
         jSeparator7 = new javax.swing.JSeparator();
         jScrollPane7 = new javax.swing.JScrollPane();
         Locaux_TextDescription = new javax.swing.JTextArea();
-        Locaux_ButtonSupprimer = new javax.swing.JButton();
+        Locaux_ButtonSupprimer1 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         Salles_List = new javax.swing.JList();
@@ -166,7 +166,7 @@ public class Interface extends javax.swing.JFrame {
         jLabel6.setText("Nom :");
 
         Locaux_Liste.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            String[] strings = { "item 1", "item 2", "item 3", "item 4", "item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
@@ -230,7 +230,12 @@ public class Interface extends javax.swing.JFrame {
         Locaux_TextDescription.setEnabled(false);
         jScrollPane7.setViewportView(Locaux_TextDescription);
 
-        Locaux_ButtonSupprimer.setText("Supprimer le local");
+        Locaux_ButtonSupprimer1.setText("Supprimer le local");
+        Locaux_ButtonSupprimer1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Locaux_ButtonSupprimer1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -263,18 +268,21 @@ public class Interface extends javax.swing.JFrame {
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(Locaux_ButtonValider, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(0, 19, Short.MAX_VALUE))))
+                                        .addGap(0, 0, Short.MAX_VALUE))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(Locaux_ButtonSupprimer))
+                                .addComponent(jLabel1)
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabelTitreLocal)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Locaux_ButtonModifier)))
                 .addGap(74, 74, 74))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addContainerGap(384, Short.MAX_VALUE)
+                    .addComponent(Locaux_ButtonSupprimer1)
+                    .addGap(252, 252, 252)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -282,9 +290,7 @@ public class Interface extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Locaux_ButtonModifier)
-                            .addComponent(Locaux_ButtonSupprimer))
+                        .addComponent(Locaux_ButtonModifier)
                         .addGap(11, 11, 11)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -317,6 +323,11 @@ public class Interface extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Locaux_ButtonAjouter)
                         .addGap(20, 20, 20))))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(16, 16, 16)
+                    .addComponent(Locaux_ButtonSupprimer1)
+                    .addContainerGap(262, Short.MAX_VALUE)))
         );
 
         jTabbedPane1.addTab("Locaux", jPanel1);
@@ -424,7 +435,7 @@ public class Interface extends javax.swing.JFrame {
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Salles_MenuDeroulantLocaux, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(Salles_ButtonAjouter))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
@@ -844,7 +855,7 @@ public class Interface extends javax.swing.JFrame {
                                     .addComponent(Int_TextEtat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 262, Short.MAX_VALUE)
                                 .addComponent(Int_ButtonAjouter)
                                 .addGap(19, 19, 19))
                             .addGroup(jPanel7Layout.createSequentialGroup()
@@ -963,12 +974,12 @@ public class Interface extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(OS_ButtonValider, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 49, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabelTitreApp1)
                         .addGap(42, 42, 42)
                         .addComponent(OS_ButtonSupprimer)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(OS_ButtonModifier)))
                 .addContainerGap())
         );
@@ -994,7 +1005,7 @@ public class Interface extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelChoixApp1)
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 268, Short.MAX_VALUE)
                         .addComponent(OS_ButtonAjouter)
                         .addGap(19, 19, 19))
                     .addGroup(jPanel4Layout.createSequentialGroup()
@@ -1044,7 +1055,7 @@ public class Interface extends javax.swing.JFrame {
                         .addComponent(jToggleButtonQuitter)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(211, 211, 211)
+                .addGap(166, 166, 166)
                 .addComponent(jLabelTitreInterface, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -1240,6 +1251,10 @@ public class Interface extends javax.swing.JFrame {
         OS_TextVersion.setEnabled(false);
     }//GEN-LAST:event_OS_ButtonValiderMouseClicked
 
+    private void Locaux_ButtonSupprimer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Locaux_ButtonSupprimer1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Locaux_ButtonSupprimer1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1299,7 +1314,7 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JTextField Int_TextNom;
     private javax.swing.JButton Locaux_ButtonAjouter;
     private javax.swing.JButton Locaux_ButtonModifier;
-    private javax.swing.JButton Locaux_ButtonSupprimer;
+    private javax.swing.JButton Locaux_ButtonSupprimer1;
     private javax.swing.JButton Locaux_ButtonValider;
     private javax.swing.JList Locaux_Liste;
     private javax.swing.JTextArea Locaux_TextDescription;
