@@ -4,6 +4,14 @@
  */
 package pkginterface;
 
+//import java.beans.Statement;
+import java.sql.Statement;
+import java.sql.Connection;
+import java.sql.Driver;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 21105905
@@ -61,6 +69,11 @@ public class AjoutLocal extends javax.swing.JFrame {
         AjoutLocal_ButtonValider.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 AjoutLocal_ButtonValiderMouseClicked(evt);
+            }
+        });
+        AjoutLocal_ButtonValider.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AjoutLocal_ButtonValiderActionPerformed(evt);
             }
         });
 
@@ -133,6 +146,27 @@ public class AjoutLocal extends javax.swing.JFrame {
         // TODO add your handling code here:
         setVisible(false);
     }//GEN-LAST:event_AjoutLocal_ButtonQuitterMouseClicked
+
+    private void AjoutLocal_ButtonValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AjoutLocal_ButtonValiderActionPerformed
+        // TODO add your handling code here:
+        try{
+            
+            String url = "jdbc:postgresql://postgresql1.alwaysdata.com:5432/projetjavastri_projetjava";
+            String username = "projetjavastri";
+            String password = "projetjavaSTRI";
+            Connection con = DriverManager.getConnection(url, username, password);
+            Statement statement = con.createStatement();
+            String Query = ("INSERT INTO locaux VALUES ('2','"+AjoutLocal_TextNom.getText()+"','"+AjoutLocal_TextDescription.getText()+"','"+AjoutLocal_TextLieu.getText()+"')");
+            
+            statement.execute(Query);
+            
+            JOptionPane.showMessageDialog(null, "ok");
+            
+        }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+    }//GEN-LAST:event_AjoutLocal_ButtonValiderActionPerformed
 
     /**
      * @param args the command line arguments
