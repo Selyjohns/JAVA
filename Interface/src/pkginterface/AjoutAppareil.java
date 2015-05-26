@@ -4,6 +4,9 @@
  */
 package pkginterface;
 
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
 /**
@@ -66,6 +69,11 @@ public class AjoutAppareil extends javax.swing.JFrame {
                 AjoutApp_ButtonValiderMouseClicked(evt);
             }
         });
+        AjoutApp_ButtonValider.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AjoutApp_ButtonValiderActionPerformed(evt);
+            }
+        });
 
         AjoutApp_ListOS.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         AjoutApp_ListOS.addActionListener(new java.awt.event.ActionListener() {
@@ -77,6 +85,11 @@ public class AjoutAppareil extends javax.swing.JFrame {
         jLabelLocalAppareil.setText("Salle :");
 
         AjoutApp_ListSalle.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        AjoutApp_ListSalle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AjoutApp_ListSalleActionPerformed(evt);
+            }
+        });
 
         AjoutApp_ButtonQuitter.setText("Annuler");
         AjoutApp_ButtonQuitter.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -175,6 +188,27 @@ public class AjoutAppareil extends javax.swing.JFrame {
         // TODO add your handling code here:
         setVisible(false);
     }//GEN-LAST:event_AjoutApp_ButtonQuitterMouseClicked
+
+    private void AjoutApp_ButtonValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AjoutApp_ButtonValiderActionPerformed
+        // TODO add your handling code here:
+        try{
+            Connexion co = new Connexion();
+            Statement statement = co.connect();
+            
+            String Query = ("INSERT INTO appareils (nom, idsalle, idos) VALUES ('"+AjoutApp_TextNom.getText()+"','(SELECT idsalle FROM salles WHERE (LOWER) "+AjoutApp_ListSalle.getSelectedItem()+" LIKE (LOWER) nom)','(SELECT idos FROM os WHERE (LOWER) "+AjoutApp_ListOS.getSelectedItem()+" LIKE (LOWER) nom)')");
+            
+            statement.execute(Query);
+            
+            JOptionPane.showMessageDialog(null, "ok");
+            
+             }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, ex.toString());}
+    }//GEN-LAST:event_AjoutApp_ButtonValiderActionPerformed
+
+    private void AjoutApp_ListSalleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AjoutApp_ListSalleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AjoutApp_ListSalleActionPerformed
 
     /**
      * @param args the command line arguments

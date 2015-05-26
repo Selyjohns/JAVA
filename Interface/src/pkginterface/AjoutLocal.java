@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author 21105905
+ * @author Thomas
  */
 public class AjoutLocal extends javax.swing.JFrame {
 

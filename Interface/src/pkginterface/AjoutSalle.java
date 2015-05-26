@@ -11,11 +11,11 @@ import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
 /**
  *
- * @author 21105905
+ * @author Thomas
  */
 public class AjoutSalle extends javax.swing.JFrame {
     
-    //int id=0;
+    
 
     /**
      * Creates new form AjoutSalle
@@ -227,9 +227,16 @@ public class AjoutSalle extends javax.swing.JFrame {
             Connexion co = new Connexion();
             Statement statement = co.connect();
             
-            String Query = ("INSERT INTO salles (nom, description, idlocal) VALUES ('"+AjoutSalle_TextNom.getText()+"','"+AjoutSalle_TextDescription.getText()+"','(SELECT idlocal FROM locaux WHERE (LOWER) "+AjoutSalle_ListLocal.getSelectedItem()+" LIKE (LOWER) nom')");
-            //id++;
-            statement.execute(Query);
+            //String result = (String) AjoutSalle_ListLocal.getSelectedItem();
+            //String Query = ("INSERT INTO salles (nom, description, idlocal) VALUES ('"+AjoutSalle_TextNom.getText()+"','"+AjoutSalle_TextDescription.getText()+"','SELECT idlocal FROM locaux WHERE nom = \'"+(String) AjoutSalle_ListLocal.getSelectedItem()+"\')'");
+            String Query1 = ("insert into salles (nom) values ('"+AjoutSalle_TextNom.getText()+"'");
+            String Query2 = ("insert into salles (description) values ('"+AjoutSalle_TextDescription.getText()+"'");
+            String Query3 = ("insert into salles (idlocal) values (SELECT idlocal FROM locaux WHERE nom = ('"+(String) AjoutSalle_ListLocal.getSelectedItem()+"')");
+            
+            JOptionPane.showMessageDialog(null, Query1);
+            JOptionPane.showMessageDialog(null, Query2);
+            JOptionPane.showMessageDialog(null, Query3);
+            statement.execute(Query3);
             
             JOptionPane.showMessageDialog(null, "ok");
             
