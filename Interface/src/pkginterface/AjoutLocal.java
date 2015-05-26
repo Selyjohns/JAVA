@@ -12,6 +12,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
+
 /**
  *
  * @author 21105905
@@ -151,21 +152,21 @@ public class AjoutLocal extends javax.swing.JFrame {
         // TODO add your handling code here:
         try{
             
-            String url = "jdbc:postgresql://postgresql1.alwaysdata.com:5432/projetjavastri_projetjava";
+            /*String url = "jdbc:postgresql://postgresql1.alwaysdata.com:5432/projetjavastri_projetjava";
             String username = "projetjavastri";
             String password = "projetjavaSTRI";
-            Connection con = DriverManager.getConnection(url, username, password);
-            Statement statement = con.createStatement();
-            String Query = ("INSERT INTO locaux VALUES ('2','"+AjoutLocal_TextNom.getText()+"','"+AjoutLocal_TextDescription.getText()+"','"+AjoutLocal_TextLieu.getText()+"')");
+            Connection con = DriverManager.getConnection(url, username, password);*/
+            Connexion co = new Connexion();
+            Statement statement = co.connect();
+            String Query = ("INSERT INTO locaux VALUES ('3','"+AjoutLocal_TextNom.getText()+"','"+AjoutLocal_TextDescription.getText()+"','"+AjoutLocal_TextLieu.getText()+"')");
             
             statement.execute(Query);
             
             JOptionPane.showMessageDialog(null, "ok");
             
-        }
+             }
         catch(SQLException ex){
-            JOptionPane.showMessageDialog(null, ex.toString());
-        }
+            JOptionPane.showMessageDialog(null, ex.toString());}
     }//GEN-LAST:event_AjoutLocal_ButtonValiderActionPerformed
 
     /**

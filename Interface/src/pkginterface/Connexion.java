@@ -16,19 +16,20 @@ import javax.swing.JOptionPane;
  * @author Thomas
  */
 public class Connexion {
+    private Statement statement;
     
-    public void connect(){
-      
-    try{
+    public Statement connect(){
+        try{
             
         String url = "jdbc:postgresql://postgresql1.alwaysdata.com:5432/projetjavastri_projetjava";
         String username = "projetjavastri";
         String password = "projetjavaSTRI";
         Connection con = DriverManager.getConnection(url, username, password);
-        Statement statement = con.createStatement();  
+        statement = con.createStatement();  
         }
     catch(SQLException ex){
         JOptionPane.showMessageDialog(null, ex.toString());
         }
+        return statement;
     }
 }
