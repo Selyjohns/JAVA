@@ -5,6 +5,7 @@
 package pkginterface;
 
 import java.sql.SQLException;
+import java.sql.*;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
@@ -226,7 +227,13 @@ public class AjoutSalle extends javax.swing.JFrame {
         try{
             Connexion co = new Connexion();
             Statement statement = co.connect();
-            
+            ResultSet resultat;
+            int IdLocal=0;
+            resultat=statement.executeQuery("SELECT idlocal FROM locaux WHERE nom="+AjoutSalle_ListLocal.getSelectedItem()+"");
+            while(resultat.next()){
+                IdLocal=resultat.getInt("Idlocal");
+            }
+            System.out.println(IdLocal);
             //String result = (String) AjoutSalle_ListLocal.getSelectedItem();
             //String Query = ("INSERT INTO salles (nom, description, idlocal) VALUES ('"+AjoutSalle_TextNom.getText()+"','"+AjoutSalle_TextDescription.getText()+"','SELECT idlocal FROM locaux WHERE nom = \'"+(String) AjoutSalle_ListLocal.getSelectedItem()+"\')'");
             String Query1 = "insert into salles (nom) values ('"+AjoutSalle_TextNom.getText()+"'";
