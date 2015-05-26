@@ -1004,7 +1004,23 @@ public class Interface extends javax.swing.JFrame {
         }
         jScrollPane4.setViewportView(OS_ListVersion);
 
-        OS_MenuDeroulant.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        OS_MenuDeroulant.setModel(new DefaultComboBoxModel());
+        DefaultComboBoxModel dcbmOS = (DefaultComboBoxModel)OS_MenuDeroulant.getModel();
+        try {
+            Connexion co = new Connexion();
+            Statement statement = co.connect();
+            String req = "SELECT nom FROM locaux";
+            ResultSet rst = statement.executeQuery(req);
+
+            while(rst.next())
+            {
+                dcbmOS.addElement(rst.getString("nom"));
+            }
+
+        }
+        catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
         OS_MenuDeroulant.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 OS_MenuDeroulantAppActionPerformed(evt);
