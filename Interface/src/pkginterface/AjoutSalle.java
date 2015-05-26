@@ -238,7 +238,7 @@ public class AjoutSalle extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, Query3);
             statement.execute(Query3);
             
-            JOptionPane.showMessageDialog(null, "ok");
+            JOptionPane.showMessageDialog(null, "Salle ajoutée");
             
              }
         catch(SQLException ex){

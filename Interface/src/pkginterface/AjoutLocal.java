@@ -158,7 +158,7 @@ public class AjoutLocal extends javax.swing.JFrame {
             
             statement.execute(Query);
             
-            JOptionPane.showMessageDialog(null, "ok");
+            JOptionPane.showMessageDialog(null, "Local ajouté");
             
              }
         catch(SQLException ex){

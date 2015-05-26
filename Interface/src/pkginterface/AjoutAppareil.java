@@ -199,7 +199,7 @@ public class AjoutAppareil extends javax.swing.JFrame {
             
             statement.execute(Query);
             
-            JOptionPane.showMessageDialog(null, "ok");
+            JOptionPane.showMessageDialog(null, "Appareil ajouté");
             
              }
         catch(SQLException ex){
