@@ -5,8 +5,10 @@
  */
 package pkginterface;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -169,11 +171,23 @@ public class Interface extends javax.swing.JFrame {
 
         jLabel6.setText("Nom :");
 
-        Locaux_Liste.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "item 1", "item 2", "item 3", "item 4", "item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
+        Locaux_Liste.setModel(new DefaultListModel());
+        DefaultListModel dlmLocaux = (DefaultListModel)Locaux_Liste.getModel();
+        try {
+            Connexion co = new Connexion();
+            Statement statement = co.connect();
+            String req = "SELECT nom FROM locaux";
+            ResultSet rst = statement.executeQuery(req);
+
+            while(rst.next())
+            {
+                dlmLocaux.addElement(rst.getString("nom"));
+            }
+
+        }
+        catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
         jScrollPane2.setViewportView(Locaux_Liste);
 
         jLabel8.setText("Description :");
@@ -331,16 +345,28 @@ public class Interface extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(16, 16, 16)
                     .addComponent(Locaux_ButtonSupprimer1)
-                    .addContainerGap(262, Short.MAX_VALUE)))
+                    .addContainerGap(460, Short.MAX_VALUE)))
         );
 
         jTabbedPane1.addTab("Locaux", jPanel1);
 
-        Salles_List.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
+        Salles_List.setModel(new DefaultListModel());
+        DefaultListModel dlmSalles = (DefaultListModel)Salles_List.getModel();
+        try {
+            Connexion co = new Connexion();
+            Statement statement = co.connect();
+            String req = "SELECT nom FROM salles";
+            ResultSet rst = statement.executeQuery(req);
+
+            while(rst.next())
+            {
+                dlmSalles.addElement(rst.getString("nom"));
+            }
+
+        }
+        catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
         jScrollPane3.setViewportView(Salles_List);
 
         Salles_MenuDeroulantLocaux.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -412,6 +438,11 @@ public class Interface extends javax.swing.JFrame {
         jScrollPane8.setViewportView(Salles_TextDescription);
 
         Salles_ButtonSupprimer.setText("Supprimer la salle");
+        Salles_ButtonSupprimer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Salles_ButtonSupprimerActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -507,11 +538,23 @@ public class Interface extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Salles", jPanel6);
 
-        App_List.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
+        App_List.setModel(new DefaultListModel());
+        DefaultListModel dlmApp = (DefaultListModel)App_List.getModel();
+        try {
+            Connexion co = new Connexion();
+            Statement statement = co.connect();
+            String req = "SELECT nom FROM appareils";
+            ResultSet rst = statement.executeQuery(req);
+
+            while(rst.next())
+            {
+                dlmApp.addElement(rst.getString("nom"));
+            }
+
+        }
+        catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
         jScrollPane1.setViewportView(App_List);
 
         App_MenuDeroulantLocaux.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -596,6 +639,11 @@ public class Interface extends javax.swing.JFrame {
         App_ComboBoxVersion.setEnabled(false);
 
         App_ButtonSupprimer.setText("Supprimer l'appareil");
+        App_ButtonSupprimer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                App_ButtonSupprimerActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -714,11 +762,23 @@ public class Interface extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Appareils", jPanel3);
 
-        Int_List.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
+        Int_List.setModel(new DefaultListModel());
+        DefaultListModel dlmInt = (DefaultListModel)Int_List.getModel();
+        try {
+            Connexion co = new Connexion();
+            Statement statement = co.connect();
+            String req = "SELECT nom FROM interfaces";
+            ResultSet rst = statement.executeQuery(req);
+
+            while(rst.next())
+            {
+                dlmInt.addElement(rst.getString("nom"));
+            }
+
+        }
+        catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
         jScrollPane5.setViewportView(Int_List);
 
         Int_ButtonValider.setText("Valider");
@@ -775,6 +835,11 @@ public class Interface extends javax.swing.JFrame {
         Int_TextEtat.setEnabled(false);
 
         Int_ButtonSupprimer.setText("Supprimer l'interface");
+        Int_ButtonSupprimer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Int_ButtonSupprimerActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -870,11 +935,23 @@ public class Interface extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Interfaces", jPanel7);
 
-        OS_ListVersion.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
+        OS_ListVersion.setModel(new DefaultListModel());
+        DefaultListModel dlmOS = (DefaultListModel)OS_ListVersion.getModel();
+        try {
+            Connexion co = new Connexion();
+            Statement statement = co.connect();
+            String req = "SELECT version FROM os";
+            ResultSet rst = statement.executeQuery(req);
+
+            while(rst.next())
+            {
+                dlmOS.addElement(rst.getString("version"));
+            }
+
+        }
+        catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
         jScrollPane4.setViewportView(OS_ListVersion);
 
         OS_MenuDeroulant.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -1218,6 +1295,18 @@ public class Interface extends javax.swing.JFrame {
 
     private void OS_ButtonSupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OS_ButtonSupprimerActionPerformed
         // TODO add your handling code here:
+        try{
+            Connexion co = new Connexion();
+            Statement statement = co.connect();
+            String Query = ("DELETE FROM os WHERE nom = \'"+OS_TextNom.getText()+"\'");
+            
+            statement.execute(Query);
+            
+            JOptionPane.showMessageDialog(null, "ok");
+            
+             }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, ex.toString());}
     }//GEN-LAST:event_OS_ButtonSupprimerActionPerformed
 
     private void Locaux_ButtonValiderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Locaux_ButtonValiderMouseClicked
@@ -1270,6 +1359,54 @@ public class Interface extends javax.swing.JFrame {
         catch(SQLException ex){
             JOptionPane.showMessageDialog(null, ex.toString());}
     }//GEN-LAST:event_Locaux_ButtonSupprimer1ActionPerformed
+
+    private void Int_ButtonSupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Int_ButtonSupprimerActionPerformed
+        // TODO add your handling code here:
+        try{
+            Connexion co = new Connexion();
+            Statement statement = co.connect();
+            String Query = ("DELETE FROM interfaces WHERE nom = \'"+Int_TextNom.getText()+"\'");
+            
+            statement.execute(Query);
+            
+            JOptionPane.showMessageDialog(null, "ok");
+            
+             }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, ex.toString());}
+    }//GEN-LAST:event_Int_ButtonSupprimerActionPerformed
+
+    private void App_ButtonSupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_App_ButtonSupprimerActionPerformed
+        // TODO add your handling code here:
+        try{
+            Connexion co = new Connexion();
+            Statement statement = co.connect();
+            String Query = ("DELETE FROM appareils WHERE nom = \'"+App_TextNom.getText()+"\'");
+            
+            statement.execute(Query);
+            
+            JOptionPane.showMessageDialog(null, "ok");
+            
+             }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, ex.toString());}
+    }//GEN-LAST:event_App_ButtonSupprimerActionPerformed
+
+    private void Salles_ButtonSupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Salles_ButtonSupprimerActionPerformed
+        // TODO add your handling code here:
+        try{
+            Connexion co = new Connexion();
+            Statement statement = co.connect();
+            String Query = ("DELETE FROM salles WHERE nom = \'"+Salles_TextNom.getText()+"\'");
+            
+            statement.execute(Query);
+            
+            JOptionPane.showMessageDialog(null, "ok");
+            
+             }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, ex.toString());}
+    }//GEN-LAST:event_Salles_ButtonSupprimerActionPerformed
 
     /**
      * @param args the command line arguments
