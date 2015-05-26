@@ -5,6 +5,10 @@
  */
 package pkginterface;
 
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Thomas
@@ -1253,6 +1257,18 @@ public class Interface extends javax.swing.JFrame {
 
     private void Locaux_ButtonSupprimer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Locaux_ButtonSupprimer1ActionPerformed
         // TODO add your handling code here:
+        try{
+            Connexion co = new Connexion();
+            Statement statement = co.connect();
+            String Query = ("DELETE FROM locaux WHERE nom = \'"+Locaux_TextNom.getText()+"\'");
+            
+            statement.execute(Query);
+            
+            JOptionPane.showMessageDialog(null, "ok");
+            
+             }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, ex.toString());}
     }//GEN-LAST:event_Locaux_ButtonSupprimer1ActionPerformed
 
     /**
