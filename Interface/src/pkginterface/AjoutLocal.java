@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author 21105905
+ * @author Thomas
  */
 public class AjoutLocal extends javax.swing.JFrame {
 
@@ -158,7 +158,7 @@ public class AjoutLocal extends javax.swing.JFrame {
             
             statement.execute(Query);
             
-            JOptionPane.showMessageDialog(null, "ok");
+            JOptionPane.showMessageDialog(null, "Local ajouté");
             
              }
         catch(SQLException ex){

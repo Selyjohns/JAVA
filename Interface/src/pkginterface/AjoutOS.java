@@ -4,6 +4,9 @@
  */
 package pkginterface;
 
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
 /**
@@ -44,6 +47,12 @@ public class AjoutOS extends javax.swing.JFrame {
 
         jLabelNomAppareil.setText("Nom :");
 
+        AjoutOS_TextNom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AjoutOS_TextNomActionPerformed(evt);
+            }
+        });
+
         jToggleButtonValiderAppareil.setText("Valider");
         jToggleButtonValiderAppareil.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -56,7 +65,7 @@ public class AjoutOS extends javax.swing.JFrame {
             }
         });
 
-        jLabelLocalAppareil.setText("Verison :");
+        jLabelLocalAppareil.setText("Version :");
 
         jButton1.setText("Annuler");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -129,12 +138,29 @@ public class AjoutOS extends javax.swing.JFrame {
 
     private void jToggleButtonValiderAppareilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonValiderAppareilActionPerformed
         // TODO add your handling code here:
+        try{
+            Connexion co = new Connexion();
+            Statement statement = co.connect();
+            
+             String Query = ("INSERT INTO os (nom, version) VALUES ('"+AjoutOS_TextNom.getText()+"','"+AjoutOS_TextVersion.getText()+"')");
+            
+            statement.execute(Query);
+            
+            JOptionPane.showMessageDialog(null, "OS ajoutée");
+            
+             }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, ex.toString());}
     }//GEN-LAST:event_jToggleButtonValiderAppareilActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
         setVisible(false);
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void AjoutOS_TextNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AjoutOS_TextNomActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AjoutOS_TextNomActionPerformed
 
     /**
      * @param args the command line arguments
