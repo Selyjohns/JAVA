@@ -151,14 +151,10 @@ public class AjoutLocal extends javax.swing.JFrame {
     private void AjoutLocal_ButtonValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AjoutLocal_ButtonValiderActionPerformed
         // TODO add your handling code here:
         try{
-            
-            /*String url = "jdbc:postgresql://postgresql1.alwaysdata.com:5432/projetjavastri_projetjava";
-            String username = "projetjavastri";
-            String password = "projetjavaSTRI";
-            Connection con = DriverManager.getConnection(url, username, password);*/
             Connexion co = new Connexion();
             Statement statement = co.connect();
-            String Query = ("INSERT INTO locaux VALUES ('3','"+AjoutLocal_TextNom.getText()+"','"+AjoutLocal_TextDescription.getText()+"','"+AjoutLocal_TextLieu.getText()+"')");
+            
+            String Query = ("INSERT INTO locaux (nom, description, lieu) VALUES ('"+AjoutLocal_TextNom.getText()+"','"+AjoutLocal_TextDescription.getText()+"','"+AjoutLocal_TextLieu.getText()+"')");
             
             statement.execute(Query);
             
@@ -195,6 +191,7 @@ public class AjoutLocal extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(AjoutLocal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

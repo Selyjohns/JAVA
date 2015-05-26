@@ -4,6 +4,9 @@
  */
 package pkginterface;
 
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
 /**
@@ -11,6 +14,8 @@ import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
  * @author 21105905
  */
 public class AjoutSalle extends javax.swing.JFrame {
+    
+    //int id=0;
 
     /**
      * Creates new form AjoutSalle
@@ -217,6 +222,21 @@ public class AjoutSalle extends javax.swing.JFrame {
 
     private void AjoutSalle_ButtonValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AjoutSalle_ButtonValiderActionPerformed
         // TODO add your handling code here:
+        
+        try{
+            Connexion co = new Connexion();
+            Statement statement = co.connect();
+            
+            String Query = ("INSERT INTO salles (nom, description, idlocal) VALUES ('"+AjoutSalle_TextNom.getText()+"','"+AjoutSalle_TextDescription.getText()+"','(SELECT idlocal FROM locaux WHERE (LOWER) "+AjoutSalle_ListLocal.getSelectedItem()+" LIKE (LOWER) nom')");
+            //id++;
+            statement.execute(Query);
+            
+            JOptionPane.showMessageDialog(null, "ok");
+            
+             }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, ex.toString());}
+                                               
     }//GEN-LAST:event_AjoutSalle_ButtonValiderActionPerformed
 
     private void AjoutSalle_ButtonQuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AjoutSalle_ButtonQuitterActionPerformed
