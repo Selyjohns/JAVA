@@ -506,13 +506,8 @@
             </Container>
             <Component class="javax.swing.JComboBox" name="Salles_MenuDeroulantLocaux">
               <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
-                  </StringArray>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="DefaultComboBoxModel dcbmSallesLocaux = (DefaultComboBoxModel)Salles_MenuDeroulantLocaux.getModel();&#xa;        try {&#xa;            Connexion co = new Connexion();&#xa;            Statement statement = co.connect();&#xa;            String req = &quot;SELECT nom FROM locaux&quot;;&#xa;            ResultSet rst = statement.executeQuery(req);&#xa;&#xa;            while(rst.next())&#xa;            {&#xa;                dcbmSallesLocaux.addElement(rst.getString(&quot;nom&quot;));&#xa;            }&#xa;&#xa;        }&#xa;        catch (Exception ex) {&#xa;            System.out.println(ex.getMessage());&#xa;        }">
+                  <Connection code="new DefaultComboBoxModel()" type="code"/>
                 </Property>
               </Properties>
               <Events>
@@ -804,13 +799,8 @@
             </Container>
             <Component class="javax.swing.JComboBox" name="App_MenuDeroulantLocaux">
               <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
-                  </StringArray>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="DefaultComboBoxModel dcbmAppLocaux = (DefaultComboBoxModel)App_MenuDeroulantLocaux.getModel();&#xa;        try {&#xa;            Connexion co = new Connexion();&#xa;            Statement statement = co.connect();&#xa;            String req = &quot;SELECT nom FROM locaux&quot;;&#xa;            ResultSet rst = statement.executeQuery(req);&#xa;&#xa;            while(rst.next())&#xa;            {&#xa;                dcbmAppLocaux.addElement(rst.getString(&quot;nom&quot;));&#xa;            }&#xa;&#xa;        }&#xa;        catch (Exception ex) {&#xa;            System.out.println(ex.getMessage());&#xa;        }">
+                  <Connection code="new DefaultComboBoxModel()" type="code"/>
                 </Property>
               </Properties>
               <Events>
@@ -859,13 +849,8 @@
             </Component>
             <Component class="javax.swing.JComboBox" name="App_MenuDeroulantSalles">
               <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
-                  </StringArray>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="DefaultComboBoxModel dcbmAppSalles = (DefaultComboBoxModel)App_MenuDeroulantSalles.getModel();&#xa;        try {&#xa;            Connexion co = new Connexion();&#xa;            Statement statement = co.connect();&#xa;            String req = &quot;SELECT nom FROM salles&quot;;&#xa;            ResultSet rst = statement.executeQuery(req);&#xa;&#xa;            while(rst.next())&#xa;            {&#xa;                dcbmAppSalles.addElement(rst.getString(&quot;nom&quot;));&#xa;            }&#xa;&#xa;        }&#xa;        catch (Exception ex) {&#xa;            System.out.println(ex.getMessage());&#xa;        }">
+                  <Connection code="new DefaultComboBoxModel()" type="code"/>
                 </Property>
               </Properties>
               <Events>

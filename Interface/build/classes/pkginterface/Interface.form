@@ -225,7 +225,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                           <Component id="Locaux_ButtonSupprimer1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="262" max="32767" attributes="0"/>
+                          <EmptySpace pref="460" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -264,14 +264,8 @@
               <SubComponents>
                 <Component class="javax.swing.JList" name="Locaux_Liste">
                   <Properties>
-                    <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                      <StringArray count="5">
-                        <StringItem index="0" value="item 1"/>
-                        <StringItem index="1" value="item 2"/>
-                        <StringItem index="2" value="item 3"/>
-                        <StringItem index="3" value="item 4"/>
-                        <StringItem index="4" value="item 5"/>
-                      </StringArray>
+                    <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="DefaultListModel dlmLocaux = (DefaultListModel)Locaux_Liste.getModel();&#xa;try {&#xa;    Connexion co = new Connexion();&#xa;    Statement statement = co.connect();&#xa;    String req = &quot;SELECT nom FROM locaux&quot;;&#xa;    ResultSet rst = statement.executeQuery(req);&#xa; &#xa;    while(rst.next())&#xa;        { &#xa;        dlmLocaux.addElement(rst.getString(&quot;nom&quot;));&#xa;        }&#xa; &#xa;    }&#xa;catch (Exception ex) {&#xa;    System.out.println(ex.getMessage());&#xa;    }">
+                      <Connection code="new DefaultListModel()" type="code"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -503,14 +497,8 @@
               <SubComponents>
                 <Component class="javax.swing.JList" name="Salles_List">
                   <Properties>
-                    <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                      <StringArray count="5">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
-                        <StringItem index="4" value="Item 5"/>
-                      </StringArray>
+                    <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="DefaultListModel dlmSalles = (DefaultListModel)Salles_List.getModel();&#xa;        try {&#xa;            Connexion co = new Connexion();&#xa;            Statement statement = co.connect();&#xa;            String req = &quot;SELECT nom FROM salles&quot;;&#xa;            ResultSet rst = statement.executeQuery(req);&#xa;&#xa;            while(rst.next())&#xa;            {&#xa;                dlmSalles.addElement(rst.getString(&quot;nom&quot;));&#xa;            }&#xa;&#xa;        }&#xa;        catch (Exception ex) {&#xa;            System.out.println(ex.getMessage());&#xa;        }">
+                      <Connection code="new DefaultListModel()" type="code"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -518,13 +506,8 @@
             </Container>
             <Component class="javax.swing.JComboBox" name="Salles_MenuDeroulantLocaux">
               <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
-                  </StringArray>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="DefaultComboBoxModel dcbmSallesLocaux = (DefaultComboBoxModel)Salles_MenuDeroulantLocaux.getModel();&#xa;        try {&#xa;            Connexion co = new Connexion();&#xa;            Statement statement = co.connect();&#xa;            String req = &quot;SELECT nom FROM locaux&quot;;&#xa;            ResultSet rst = statement.executeQuery(req);&#xa;&#xa;            while(rst.next())&#xa;            {&#xa;                dcbmSallesLocaux.addElement(rst.getString(&quot;nom&quot;));&#xa;            }&#xa;&#xa;        }&#xa;        catch (Exception ex) {&#xa;            System.out.println(ex.getMessage());&#xa;        }">
+                  <Connection code="new DefaultComboBoxModel()" type="code"/>
                 </Property>
               </Properties>
               <Events>
@@ -631,6 +614,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Supprimer la salle"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Salles_ButtonSupprimerActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -804,14 +790,8 @@
               <SubComponents>
                 <Component class="javax.swing.JList" name="App_List">
                   <Properties>
-                    <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                      <StringArray count="5">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
-                        <StringItem index="4" value="Item 5"/>
-                      </StringArray>
+                    <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="DefaultListModel dlmApp = (DefaultListModel)App_List.getModel();&#xa;        try {&#xa;            Connexion co = new Connexion();&#xa;            Statement statement = co.connect();&#xa;            String req = &quot;SELECT nom FROM appareils&quot;;&#xa;            ResultSet rst = statement.executeQuery(req);&#xa;&#xa;            while(rst.next())&#xa;            {&#xa;                dlmApp.addElement(rst.getString(&quot;nom&quot;));&#xa;            }&#xa;&#xa;        }&#xa;        catch (Exception ex) {&#xa;            System.out.println(ex.getMessage());&#xa;        }">
+                      <Connection code="new DefaultListModel()" type="code"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -819,13 +799,8 @@
             </Container>
             <Component class="javax.swing.JComboBox" name="App_MenuDeroulantLocaux">
               <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
-                  </StringArray>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="DefaultComboBoxModel dcbmAppLocaux = (DefaultComboBoxModel)App_MenuDeroulantLocaux.getModel();&#xa;        try {&#xa;            Connexion co = new Connexion();&#xa;            Statement statement = co.connect();&#xa;            String req = &quot;SELECT nom FROM locaux&quot;;&#xa;            ResultSet rst = statement.executeQuery(req);&#xa;&#xa;            while(rst.next())&#xa;            {&#xa;                dcbmAppLocaux.addElement(rst.getString(&quot;nom&quot;));&#xa;            }&#xa;&#xa;        }&#xa;        catch (Exception ex) {&#xa;            System.out.println(ex.getMessage());&#xa;        }">
+                  <Connection code="new DefaultComboBoxModel()" type="code"/>
                 </Property>
               </Properties>
               <Events>
@@ -874,13 +849,8 @@
             </Component>
             <Component class="javax.swing.JComboBox" name="App_MenuDeroulantSalles">
               <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
-                  </StringArray>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="DefaultComboBoxModel dcbmAppSalles = (DefaultComboBoxModel)App_MenuDeroulantSalles.getModel();&#xa;        try {&#xa;            Connexion co = new Connexion();&#xa;            Statement statement = co.connect();&#xa;            String req = &quot;SELECT nom FROM salles&quot;;&#xa;            ResultSet rst = statement.executeQuery(req);&#xa;&#xa;            while(rst.next())&#xa;            {&#xa;                dcbmAppSalles.addElement(rst.getString(&quot;nom&quot;));&#xa;            }&#xa;&#xa;        }&#xa;        catch (Exception ex) {&#xa;            System.out.println(ex.getMessage());&#xa;        }">
+                  <Connection code="new DefaultComboBoxModel()" type="code"/>
                 </Property>
               </Properties>
               <Events>
@@ -979,6 +949,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Supprimer l&apos;appareil"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="App_ButtonSupprimerActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -1124,14 +1097,8 @@
               <SubComponents>
                 <Component class="javax.swing.JList" name="Int_List">
                   <Properties>
-                    <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                      <StringArray count="5">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
-                        <StringItem index="4" value="Item 5"/>
-                      </StringArray>
+                    <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="DefaultListModel dlmInt = (DefaultListModel)Int_List.getModel();&#xa;        try {&#xa;            Connexion co = new Connexion();&#xa;            Statement statement = co.connect();&#xa;            String req = &quot;SELECT nom FROM interfaces&quot;;&#xa;            ResultSet rst = statement.executeQuery(req);&#xa;&#xa;            while(rst.next())&#xa;            {&#xa;                dlmInt.addElement(rst.getString(&quot;nom&quot;));&#xa;            }&#xa;&#xa;        }&#xa;        catch (Exception ex) {&#xa;            System.out.println(ex.getMessage());&#xa;        }">
+                      <Connection code="new DefaultListModel()" type="code"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -1223,6 +1190,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Supprimer l&apos;interface"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Int_ButtonSupprimerActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -1363,14 +1333,8 @@
               <SubComponents>
                 <Component class="javax.swing.JList" name="OS_ListVersion">
                   <Properties>
-                    <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                      <StringArray count="5">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
-                        <StringItem index="4" value="Item 5"/>
-                      </StringArray>
+                    <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="DefaultListModel dlmOS = (DefaultListModel)OS_ListVersion.getModel();&#xa;        try {&#xa;            Connexion co = new Connexion();&#xa;            Statement statement = co.connect();&#xa;            String req = &quot;SELECT version FROM os&quot;;&#xa;            ResultSet rst = statement.executeQuery(req);&#xa;&#xa;            while(rst.next())&#xa;            {&#xa;                dlmOS.addElement(rst.getString(&quot;version&quot;));&#xa;            }&#xa;&#xa;        }&#xa;        catch (Exception ex) {&#xa;            System.out.println(ex.getMessage());&#xa;        }">
+                      <Connection code="new DefaultListModel()" type="code"/>
                     </Property>
                   </Properties>
                 </Component>

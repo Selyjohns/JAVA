@@ -8,6 +8,8 @@ package pkginterface;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -369,7 +371,23 @@ public class Interface extends javax.swing.JFrame {
         }
         jScrollPane3.setViewportView(Salles_List);
 
-        Salles_MenuDeroulantLocaux.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Salles_MenuDeroulantLocaux.setModel(new DefaultComboBoxModel());
+        DefaultComboBoxModel dcbmSallesLocaux = (DefaultComboBoxModel)Salles_MenuDeroulantLocaux.getModel();
+        try {
+            Connexion co = new Connexion();
+            Statement statement = co.connect();
+            String req = "SELECT nom FROM locaux";
+            ResultSet rst = statement.executeQuery(req);
+
+            while(rst.next())
+            {
+                dcbmSallesLocaux.addElement(rst.getString("nom"));
+            }
+
+        }
+        catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
         Salles_MenuDeroulantLocaux.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Salles_MenuDeroulantLocauxAppActionPerformed(evt);
@@ -557,7 +575,23 @@ public class Interface extends javax.swing.JFrame {
         }
         jScrollPane1.setViewportView(App_List);
 
-        App_MenuDeroulantLocaux.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        App_MenuDeroulantLocaux.setModel(new DefaultComboBoxModel());
+        DefaultComboBoxModel dcbmAppLocaux = (DefaultComboBoxModel)App_MenuDeroulantLocaux.getModel();
+        try {
+            Connexion co = new Connexion();
+            Statement statement = co.connect();
+            String req = "SELECT nom FROM locaux";
+            ResultSet rst = statement.executeQuery(req);
+
+            while(rst.next())
+            {
+                dcbmAppLocaux.addElement(rst.getString("nom"));
+            }
+
+        }
+        catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
         App_MenuDeroulantLocaux.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 App_MenuDeroulantLocauxAppActionPerformed(evt);
@@ -592,7 +626,23 @@ public class Interface extends javax.swing.JFrame {
 
         jLabelChoixSalleApp.setText("Sélectionner la salle :");
 
-        App_MenuDeroulantSalles.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        App_MenuDeroulantSalles.setModel(new DefaultComboBoxModel());
+        DefaultComboBoxModel dcbmAppSalles = (DefaultComboBoxModel)App_MenuDeroulantSalles.getModel();
+        try {
+            Connexion co = new Connexion();
+            Statement statement = co.connect();
+            String req = "SELECT nom FROM salles";
+            ResultSet rst = statement.executeQuery(req);
+
+            while(rst.next())
+            {
+                dcbmAppSalles.addElement(rst.getString("nom"));
+            }
+
+        }
+        catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
         App_MenuDeroulantSalles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 App_MenuDeroulantSallesAppActionPerformed(evt);
