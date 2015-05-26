@@ -229,7 +229,7 @@ public class AjoutSalle extends javax.swing.JFrame {
             
             //String result = (String) AjoutSalle_ListLocal.getSelectedItem();
             //String Query = ("INSERT INTO salles (nom, description, idlocal) VALUES ('"+AjoutSalle_TextNom.getText()+"','"+AjoutSalle_TextDescription.getText()+"','SELECT idlocal FROM locaux WHERE nom = \'"+(String) AjoutSalle_ListLocal.getSelectedItem()+"\')'");
-            String Query1 = ("insert into salles (nom) values ('"+AjoutSalle_TextNom.getText()+"'");
+            String Query1 = "insert into salles (nom) values ('"+AjoutSalle_TextNom.getText()+"'";
             String Query2 = ("insert into salles (description) values ('"+AjoutSalle_TextDescription.getText()+"'");
             String Query3 = ("insert into salles (idlocal) values (SELECT idlocal FROM locaux WHERE nom = ('"+(String) AjoutSalle_ListLocal.getSelectedItem()+"')");
             
