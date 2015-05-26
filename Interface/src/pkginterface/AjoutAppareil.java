@@ -4,8 +4,10 @@
  */
 package pkginterface;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
@@ -61,7 +63,24 @@ public class AjoutAppareil extends javax.swing.JFrame {
 
         jLabelNomOS.setText("Version de l'OS :");
 
-        AjoutApp_ListVersionOS.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        AjoutApp_ListVersionOS.setEnabled(false);
+        AjoutApp_ListVersionOS.setModel(new DefaultComboBoxModel());
+        DefaultComboBoxModel dcbmAjoutAppVersionOS = (DefaultComboBoxModel)AjoutApp_ListVersionOS.getModel();
+        try {
+            Connexion co = new Connexion();
+            Statement statement = co.connect();
+            String req = "SELECT version FROM os";
+            ResultSet rst = statement.executeQuery(req);
+
+            while(rst.next())
+            {
+                dcbmAjoutAppVersionOS.addElement(rst.getString("version"));
+            }
+
+        }
+        catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
 
         AjoutApp_ButtonValider.setText("Valider");
         AjoutApp_ButtonValider.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -75,7 +94,28 @@ public class AjoutAppareil extends javax.swing.JFrame {
             }
         });
 
-        AjoutApp_ListOS.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        AjoutApp_ListOS.setModel(new DefaultComboBoxModel());
+        DefaultComboBoxModel dcbmAjoutAppOS = (DefaultComboBoxModel)AjoutApp_ListOS.getModel();
+        try {
+            Connexion co = new Connexion();
+            Statement statement = co.connect();
+            String req = "SELECT nom FROM OS";
+            ResultSet rst = statement.executeQuery(req);
+            dcbmAjoutAppOS.addElement("Aucun OS");
+            while(rst.next())
+            {
+                dcbmAjoutAppOS.addElement(rst.getString("nom"));
+            }
+
+        }
+        catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        AjoutApp_ListOS.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                AjoutApp_ListOSItemStateChanged(evt);
+            }
+        });
         AjoutApp_ListOS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AjoutApp_ListOSActionPerformed(evt);
@@ -84,12 +124,23 @@ public class AjoutAppareil extends javax.swing.JFrame {
 
         jLabelLocalAppareil.setText("Salle :");
 
-        AjoutApp_ListSalle.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        AjoutApp_ListSalle.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AjoutApp_ListSalleActionPerformed(evt);
+        AjoutApp_ListSalle.setModel(new DefaultComboBoxModel());
+        DefaultComboBoxModel dcbmAjoutAppSalles = (DefaultComboBoxModel)AjoutApp_ListSalle.getModel();
+        try {
+            Connexion co = new Connexion();
+            Statement statement = co.connect();
+            String req = "SELECT nom FROM salles";
+            ResultSet rst = statement.executeQuery(req);
+
+            while(rst.next())
+            {
+                dcbmAjoutAppSalles.addElement(rst.getString("nom"));
             }
-        });
+
+        }
+        catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
 
         AjoutApp_ButtonQuitter.setText("Annuler");
         AjoutApp_ButtonQuitter.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -193,13 +244,16 @@ public class AjoutAppareil extends javax.swing.JFrame {
         // TODO add your handling code here:
         try{
             Connexion co = new Connexion();
-            Statement statement = co.connect();
+            String req = "SELECT idos FROM os WHERE nom = '"+AjoutApp_ListOS.getSelectedItem().toString()+"'";
+            ResultSet rst = co.connect().executeQuery(req);
+            rst.next();
+            String reqSalle = "SELECT idsalle FROM salles WHERE nom = '"+AjoutApp_ListSalle.getSelectedItem().toString()+"'";
+            ResultSet rstSalle = co.connect().executeQuery(reqSalle);
+            rstSalle.next();
+            String Query = "INSERT INTO appareils (nom, idsalle, idos) VALUES ('"+AjoutApp_TextNom.getText()+"','"+rstSalle.getInt("idsalle")+"','"+rst.getInt("idos")+"')";
+            co.connect().execute(Query);
             
-            String Query = ("INSERT INTO appareils (nom, idsalle, idos) VALUES ('"+AjoutApp_TextNom.getText()+"','(SELECT idsalle FROM salles WHERE (LOWER) "+AjoutApp_ListSalle.getSelectedItem()+" LIKE (LOWER) nom)','(SELECT idos FROM os WHERE (LOWER) "+AjoutApp_ListOS.getSelectedItem()+" LIKE (LOWER) nom)')");
-            
-            statement.execute(Query);
-            
-            JOptionPane.showMessageDialog(null, "Appareil ajouté");
+            JOptionPane.showMessageDialog(null, "ok");
             
              }
         catch(SQLException ex){
@@ -209,6 +263,12 @@ public class AjoutAppareil extends javax.swing.JFrame {
     private void AjoutApp_ListSalleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AjoutApp_ListSalleActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_AjoutApp_ListSalleActionPerformed
+
+    private void AjoutApp_ListOSItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_AjoutApp_ListOSItemStateChanged
+        // TODO add your handling code here:
+        AjoutApp_ListVersionOS.setEnabled(true);
+        
+    }//GEN-LAST:event_AjoutApp_ListOSItemStateChanged
 
     /**
      * @param args the command line arguments

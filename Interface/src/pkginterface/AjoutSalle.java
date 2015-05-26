@@ -7,6 +7,7 @@ package pkginterface;
 import java.sql.SQLException;
 import java.sql.*;
 import java.sql.Statement;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
@@ -149,7 +150,23 @@ public class AjoutSalle extends javax.swing.JFrame {
         AjoutSalle_TextDescription.setRows(5);
         jScrollPane2.setViewportView(AjoutSalle_TextDescription);
 
-        AjoutSalle_ListLocal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        AjoutSalle_ListLocal.setModel(new DefaultComboBoxModel());
+        DefaultComboBoxModel dcbmAjoutSallesLocaux = (DefaultComboBoxModel)AjoutSalle_ListLocal.getModel();
+        try {
+            Connexion co = new Connexion();
+            Statement statement = co.connect();
+            String req = "SELECT nom FROM locaux";
+            ResultSet rst = statement.executeQuery(req);
+
+            while(rst.next())
+            {
+                dcbmAjoutSallesLocaux.addElement(rst.getString("nom"));
+            }
+
+        }
+        catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
 
         AjoutSalle_ButtonQuitter.setText("Annuler");
         AjoutSalle_ButtonQuitter.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -223,7 +240,7 @@ public class AjoutSalle extends javax.swing.JFrame {
 
     private void AjoutSalle_ButtonValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AjoutSalle_ButtonValiderActionPerformed
         // TODO add your handling code here:
-        
+        /*
         try{
             Connexion co = new Connexion();
             Statement statement = co.connect();
@@ -250,7 +267,22 @@ public class AjoutSalle extends javax.swing.JFrame {
              }
         catch(SQLException ex){
             JOptionPane.showMessageDialog(null, ex.toString());}
-                                               
+    */ 
+        try{
+            Connexion co = new Connexion();
+            Statement statement = co.connect();
+            String req = "SELECT idlocal FROM locaux WHERE nom = \'"+AjoutSalle_ListLocal.getSelectedItem()+"\'";
+            ResultSet rst = statement.executeQuery(req);
+            rst.next();
+            String Query = "INSERT INTO salles (nom, description, idlocal) VALUES ('"+AjoutSalle_TextNom.getText()+"','"+AjoutSalle_TextDescription.getText()+"','"+rst.getInt("idlocal")+"')";
+            
+            statement.execute(Query);
+            
+            JOptionPane.showMessageDialog(null, "ok");
+            
+             }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, ex.toString());}
     }//GEN-LAST:event_AjoutSalle_ButtonValiderActionPerformed
 
     private void AjoutSalle_ButtonQuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AjoutSalle_ButtonQuitterActionPerformed

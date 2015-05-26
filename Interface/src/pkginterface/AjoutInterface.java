@@ -4,6 +4,9 @@
  */
 package pkginterface;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
 /**
@@ -210,6 +213,16 @@ public class AjoutInterface extends javax.swing.JFrame {
 
     private void AjoutInt_ButtonValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AjoutInt_ButtonValiderActionPerformed
         // TODO add your handling code here:
+        try{
+            Connexion co = new Connexion();
+            String Query = "INSERT INTO interfaces (nom, adressemac, etat) VALUES ('"+AjoutInt_TextNom.getText()+"','"+AjoutInt_TextMAC.getText()+"','"+AjoutInt_TextEtat.getText()+"')";
+            co.connect().execute(Query);
+            
+            JOptionPane.showMessageDialog(null, "ok");
+            
+             }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, ex.toString());}
     }//GEN-LAST:event_AjoutInt_ButtonValiderActionPerformed
 
     private void AjoutInt_ButtonQuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AjoutInt_ButtonQuitterActionPerformed

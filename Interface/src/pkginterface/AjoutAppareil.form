@@ -128,14 +128,7 @@
     </Component>
     <Component class="javax.swing.JComboBox" name="AjoutApp_ListVersionOS">
       <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
-        </Property>
+        <Property name="enabled" type="boolean" value="false" postCode="AjoutApp_ListVersionOS.setModel(new DefaultComboBoxModel());&#xa;DefaultComboBoxModel dcbmAjoutAppVersionOS = (DefaultComboBoxModel)AjoutApp_ListVersionOS.getModel();&#xa;        try {&#xa;            Connexion co = new Connexion();&#xa;            Statement statement = co.connect();&#xa;            String req = &quot;SELECT version FROM os&quot;;&#xa;            ResultSet rst = statement.executeQuery(req);&#xa;&#xa;            while(rst.next())&#xa;            {&#xa;                dcbmAjoutAppVersionOS.addElement(rst.getString(&quot;version&quot;));&#xa;            }&#xa;&#xa;        }&#xa;        catch (Exception ex) {&#xa;            System.out.println(ex.getMessage());&#xa;        }"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JToggleButton" name="AjoutApp_ButtonValider">
@@ -144,20 +137,17 @@
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="AjoutApp_ButtonValiderMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AjoutApp_ButtonValiderActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="AjoutApp_ListOS">
       <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="DefaultComboBoxModel dcbmAjoutAppOS = (DefaultComboBoxModel)AjoutApp_ListOS.getModel();&#xa;        try {&#xa;            Connexion co = new Connexion();&#xa;            Statement statement = co.connect();&#xa;            String req = &quot;SELECT nom FROM OS&quot;;&#xa;            ResultSet rst = statement.executeQuery(req);&#xa;            dcbmAjoutAppOS.addElement(&quot;Aucun OS&quot;);&#xa;            while(rst.next())&#xa;            {&#xa;                dcbmAjoutAppOS.addElement(rst.getString(&quot;nom&quot;));&#xa;            }&#xa;&#xa;        }&#xa;        catch (Exception ex) {&#xa;            System.out.println(ex.getMessage());&#xa;        }">
+          <Connection code="new DefaultComboBoxModel()" type="code"/>
         </Property>
       </Properties>
       <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="AjoutApp_ListOSItemStateChanged"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AjoutApp_ListOSActionPerformed"/>
       </Events>
     </Component>
@@ -168,15 +158,13 @@
     </Component>
     <Component class="javax.swing.JComboBox" name="AjoutApp_ListSalle">
       <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="new DefaultComboBoxModel()" type="code"/>
         </Property>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="DefaultComboBoxModel dcbmAjoutAppSalles = (DefaultComboBoxModel)AjoutApp_ListSalle.getModel();&#xa;        try {&#xa;            Connexion co = new Connexion();&#xa;            Statement statement = co.connect();&#xa;            String req = &quot;SELECT nom FROM salles&quot;;&#xa;            ResultSet rst = statement.executeQuery(req);&#xa;&#xa;            while(rst.next())&#xa;            {&#xa;                dcbmAjoutAppSalles.addElement(rst.getString(&quot;nom&quot;));&#xa;            }&#xa;&#xa;        }&#xa;        catch (Exception ex) {&#xa;            System.out.println(ex.getMessage());&#xa;        }"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="AjoutApp_ButtonQuitter">
       <Properties>
