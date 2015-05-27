@@ -56,6 +56,7 @@ public class Interface extends javax.swing.JFrame {
         jScrollPane7 = new javax.swing.JScrollPane();
         Locaux_TextDescription = new javax.swing.JTextArea();
         Locaux_ButtonSupprimer1 = new javax.swing.JButton();
+        Actualiser1 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         Salles_List = new javax.swing.JList();
@@ -117,6 +118,7 @@ public class Interface extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         Int_TextEtat = new javax.swing.JTextField();
         Int_ButtonSupprimer = new javax.swing.JButton();
+        Actualiser2 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         OS_ListVersion = new javax.swing.JList();
@@ -262,6 +264,13 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
+        Actualiser1.setText("Actualiser");
+        Actualiser1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Actualiser1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -270,12 +279,17 @@ public class Interface extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabelChoixLocal)
-                        .addGap(34, 34, 34)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(Locaux_ButtonAjouter)
-                    .addComponent(jLabelTitreLocal))
-                .addGap(27, 27, 27)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabelChoixLocal)
+                                .addGap(34, 34, 34)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Locaux_ButtonAjouter)
+                            .addComponent(jLabelTitreLocal))
+                        .addGap(27, 27, 27))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(Actualiser1)
+                        .addGap(42, 42, 42)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -340,6 +354,8 @@ public class Interface extends javax.swing.JFrame {
                                 .addComponent(jLabelTitreLocal)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabelChoixLocal, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Actualiser1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Locaux_ButtonAjouter)
                         .addGap(20, 20, 20))))
@@ -611,6 +627,11 @@ public class Interface extends javax.swing.JFrame {
                 App_ButtonModifierMouseClicked(evt);
             }
         });
+        App_ButtonModifier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                App_ButtonModifierActionPerformed(evt);
+            }
+        });
 
         jLabelLocalApp.setText("Sélectionner le local :");
 
@@ -880,6 +901,13 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
+        Actualiser2.setText("Actualiser");
+        Actualiser2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Actualiser2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -889,12 +917,17 @@ public class Interface extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelLocalApp2)
                             .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addGap(135, 135, 135)
-                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(Int_ButtonAjouter))
-                        .addGap(28, 28, 28)
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelLocalApp2)
+                                    .addGroup(jPanel7Layout.createSequentialGroup()
+                                        .addGap(135, 135, 135)
+                                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(Int_ButtonAjouter))
+                                .addGap(28, 28, 28))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                                .addComponent(Actualiser2)
+                                .addGap(47, 47, 47)))
                         .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel7Layout.createSequentialGroup()
@@ -946,7 +979,9 @@ public class Interface extends javax.swing.JFrame {
                             .addGroup(jPanel7Layout.createSequentialGroup()
                                 .addComponent(jLabelLocalApp2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(Actualiser2))
                             .addGroup(jPanel7Layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addGap(18, 18, 18)
@@ -963,7 +998,7 @@ public class Interface extends javax.swing.JFrame {
                                     .addComponent(Int_TextEtat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 262, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                                 .addComponent(Int_ButtonAjouter)
                                 .addGap(19, 19, 19))
                             .addGroup(jPanel7Layout.createSequentialGroup()
@@ -1684,6 +1719,19 @@ public class Interface extends javax.swing.JFrame {
 
     private void App_ComboBoxOSItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_App_ComboBoxOSItemStateChanged
         // TODO add your handling code here:
+        try{
+            Connexion co = new Connexion();
+            String req = "SELECT version FROM os  WHERE os.nom = '"+((String)App_ComboBoxOS.getSelectedItem()).trim()+"'";
+            ResultSet rst = co.connect().executeQuery(req);
+            App_ComboBoxVersion.setModel(new DefaultComboBoxModel());
+            DefaultComboBoxModel dcbmVersionOS = (DefaultComboBoxModel) App_ComboBoxVersion.getModel();
+            
+            while(rst.next()) {
+                dcbmVersionOS.addElement(rst.getString("version"));
+            }
+        }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, ex.toString());}
     }//GEN-LAST:event_App_ComboBoxOSItemStateChanged
 
     private void Salles_ButtonValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Salles_ButtonValiderActionPerformed
@@ -1702,6 +1750,75 @@ public class Interface extends javax.swing.JFrame {
         catch(SQLException ex){
             JOptionPane.showMessageDialog(null, ex.toString());}
     }//GEN-LAST:event_Salles_ButtonValiderActionPerformed
+
+    private void App_ButtonModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_App_ButtonModifierActionPerformed
+        // TODO add your handling code here:
+        try{
+            Connexion co = new Connexion();
+            String reqOS = "SELECT * FROM os";
+            ResultSet rstOS = co.connect().executeQuery(reqOS);
+            App_ComboBoxOS.setModel(new DefaultComboBoxModel());
+            DefaultComboBoxModel dcbmOS = (DefaultComboBoxModel) App_ComboBoxOS.getModel();
+            
+            while(rstOS.next()) {
+                dcbmOS.addElement(rstOS.getString("nom"));
+            }
+            
+            String req = "SELECT version FROM os  WHERE os.nom = '"+((String)App_ComboBoxOS.getSelectedItem()).trim()+"'";
+            ResultSet rst = co.connect().executeQuery(req);
+            App_ComboBoxVersion.setModel(new DefaultComboBoxModel());
+            DefaultComboBoxModel dcbmVersionOS = (DefaultComboBoxModel) App_ComboBoxVersion.getModel();
+            
+            while(rst.next()) {
+                dcbmVersionOS.addElement(rst.getString("version"));
+            }
+        }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, ex.toString());}
+            
+    }//GEN-LAST:event_App_ButtonModifierActionPerformed
+
+    private void Actualiser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Actualiser1ActionPerformed
+        // TODO add your handling code here:
+        Locaux_Liste.setModel(new DefaultListModel());
+DefaultListModel dlmLocaux = (DefaultListModel)Locaux_Liste.getModel();
+try {
+    Connexion co = new Connexion();
+    Statement statement = co.connect();
+    String req = "SELECT nom FROM locaux";
+    ResultSet rst = statement.executeQuery(req);
+ 
+    while(rst.next())
+        { 
+        dlmLocaux.addElement(rst.getString("nom"));
+        }
+ 
+    }
+catch (Exception ex) {
+    System.out.println(ex.getMessage());
+    }
+    }//GEN-LAST:event_Actualiser1ActionPerformed
+
+    private void Actualiser2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Actualiser2ActionPerformed
+        // TODO add your handling code here:
+        Int_List.setModel(new DefaultListModel());
+DefaultListModel dlmInt = (DefaultListModel)Int_List.getModel();
+        try {
+            Connexion co = new Connexion();
+            Statement statement = co.connect();
+            String req = "SELECT nom FROM interfaces";
+            ResultSet rst = statement.executeQuery(req);
+
+            while(rst.next())
+            {
+                dlmInt.addElement(rst.getString("nom"));
+            }
+
+        }
+        catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }//GEN-LAST:event_Actualiser2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1740,6 +1857,8 @@ public class Interface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Actualiser1;
+    private javax.swing.JButton Actualiser2;
     private javax.swing.JButton App_ButtonAjouter;
     private javax.swing.JButton App_ButtonModifier;
     private javax.swing.JButton App_ButtonSupprimer;
