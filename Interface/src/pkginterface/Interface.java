@@ -190,6 +190,11 @@ public class Interface extends javax.swing.JFrame {
         catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
+        Locaux_Liste.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                Locaux_ListeValueChanged(evt);
+            }
+        });
         jScrollPane2.setViewportView(Locaux_Liste);
 
         jLabel8.setText("Description :");
@@ -359,6 +364,11 @@ public class Interface extends javax.swing.JFrame {
         catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
+        Salles_List.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                Salles_ListValueChanged(evt);
+            }
+        });
         jScrollPane3.setViewportView(Salles_List);
 
         Salles_MenuDeroulantLocaux.setModel(new DefaultComboBoxModel());
@@ -565,6 +575,11 @@ public class Interface extends javax.swing.JFrame {
         catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
+        App_List.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                App_ListValueChanged(evt);
+            }
+        });
         jScrollPane1.setViewportView(App_List);
 
         App_MenuDeroulantLocaux.setModel(new DefaultComboBoxModel());
@@ -1465,6 +1480,61 @@ public class Interface extends javax.swing.JFrame {
         catch(SQLException ex){
             JOptionPane.showMessageDialog(null, ex.toString());}
     }//GEN-LAST:event_Salles_ButtonSupprimerActionPerformed
+
+    private void Locaux_ListeValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_Locaux_ListeValueChanged
+        // TODO add your handling code here:
+        try {
+            Connexion co = new Connexion();
+            String req = "SELECT * FROM locaux WHERE nom = '"+((String)Locaux_Liste.getSelectedValue()).trim()+"'";
+            ResultSet rst = co.connect().executeQuery(req);
+            rst.next();
+            Locaux_TextNom.setText(rst.getString("nom"));
+            Locaux_TextLieu.setText(rst.getString("lieu"));
+            Locaux_TextDescription.setText(rst.getString("description"));
+
+        }
+        catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }//GEN-LAST:event_Locaux_ListeValueChanged
+
+    private void Salles_ListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_Salles_ListValueChanged
+        // TODO add your handling code here:
+        try {
+            Connexion co = new Connexion();
+            String req = "SELECT * FROM salles WHERE nom = '"+((String)Salles_List.getSelectedValue()).trim()+"'";
+            ResultSet rst = co.connect().executeQuery(req);
+            rst.next();
+            Salles_TextNom.setText(rst.getString("nom"));
+            Salles_TextDescription.setText(rst.getString("description"));
+
+        }
+        catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }//GEN-LAST:event_Salles_ListValueChanged
+
+    private void App_ListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_App_ListValueChanged
+        // TODO add your handling code here:
+        try {
+            Connexion co = new Connexion();
+            String req = "SELECT * FROM appareils WHERE nom = '"+((String)App_List.getSelectedValue()).trim()+"'";
+            ResultSet rst = co.connect().executeQuery(req);
+            rst.next();
+            App_TextNom.setText(rst.getString("nom"));
+            String reqSalle = "SELECT * FROM salles AS s, appareils AS a WHERE s.idsalle = a.idsalle AND a.idsalle = "+rst.getInt("idsalle")+"";
+            ResultSet rstSalle = co.connect().executeQuery(reqSalle);
+            rstSalle.next();
+            App_TextSalle.setText(rstSalle.getString("nom"));
+            String reqLocal = "SELECT l.nom FROM salles AS s, locaux AS l WHERE s.idlocal = l.idlocal AND s.idsalle = "+rstSalle.getInt("idsalle")+"";
+            ResultSet rstLocal = co.connect().executeQuery(reqLocal);
+            rstLocal.next();
+            App_TextLocal.setText(rstLocal.getString("nom"));
+        }
+        catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }//GEN-LAST:event_App_ListValueChanged
 
     /**
      * @param args the command line arguments
