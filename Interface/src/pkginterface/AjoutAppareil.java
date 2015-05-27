@@ -253,7 +253,7 @@ public class AjoutAppareil extends javax.swing.JFrame {
             String Query = "INSERT INTO appareils (nom, idsalle, idos) VALUES ('"+AjoutApp_TextNom.getText()+"','"+rstSalle.getInt("idsalle")+"','"+rst.getInt("idos")+"')";
             co.connect().execute(Query);
             
-            JOptionPane.showMessageDialog(null, "ok");
+            JOptionPane.showMessageDialog(null, "Matériel ajouté");
             
              }
         catch(SQLException ex){

@@ -146,7 +146,7 @@ public class AjoutOS extends javax.swing.JFrame {
             
             statement.execute(Query);
             
-            JOptionPane.showMessageDialog(null, "OS ajoutée");
+            JOptionPane.showMessageDialog(null, "OS ajouté");
             
              }
         catch(SQLException ex){
