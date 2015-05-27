@@ -218,7 +218,7 @@ public class AjoutInterface extends javax.swing.JFrame {
             String Query = "INSERT INTO interfaces (nom, adressemac, etat) VALUES ('"+AjoutInt_TextNom.getText()+"','"+AjoutInt_TextMAC.getText()+"','"+AjoutInt_TextEtat.getText()+"')";
             co.connect().execute(Query);
             
-            JOptionPane.showMessageDialog(null, "ok");
+            JOptionPane.showMessageDialog(null, "Interface ajoutée");
             
              }
         catch(SQLException ex){
