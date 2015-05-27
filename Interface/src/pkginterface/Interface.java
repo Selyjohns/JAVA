@@ -389,6 +389,11 @@ public class Interface extends javax.swing.JFrame {
                 Salles_ButtonValiderMouseClicked(evt);
             }
         });
+        Salles_ButtonValider.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Salles_ButtonValiderActionPerformed(evt);
+            }
+        });
 
         jLabelChoixSalle.setText("Sélectionner la salle :");
 
@@ -1209,6 +1214,7 @@ public class Interface extends javax.swing.JFrame {
 
     private void App_ButtonValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_App_ButtonValiderActionPerformed
         // TODO add your handling code here:
+        //UPDATE Appareils
     }//GEN-LAST:event_App_ButtonValiderActionPerformed
 
     private void jToggleButtonQuitterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButtonQuitterMouseClicked
@@ -1227,6 +1233,24 @@ public class Interface extends javax.swing.JFrame {
 
     private void Int_ButtonValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Int_ButtonValiderActionPerformed
         // TODO add your handling code here:
+        try{
+            Connexion co = new Connexion();
+            Statement statement = co.connect();
+            
+            String Query = ("UPDATE interfaces SET nom = '"+Int_TextNom.getText()+"', adressemac = '"+Int_TextMAC.getText()+"''");
+            statement.execute(Query);
+            if ("activé".equals(Int_TextEtat.getText())) {
+                String reqTrue = ("UPDATE interfaces SET etatinterface = TRUE");
+                co.connect().executeQuery(reqTrue);}
+            else {
+                String reqFalse = ("UPDATE interfaces SET etatinterface = FALSE");
+                co.connect().executeQuery(reqFalse);}
+            
+            JOptionPane.showMessageDialog(null, "Local modifié");
+            
+             }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, ex.toString());}
     }//GEN-LAST:event_Int_ButtonValiderActionPerformed
 
     private void Int_ButtonModifierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Int_ButtonModifierMouseClicked
@@ -1293,6 +1317,19 @@ public class Interface extends javax.swing.JFrame {
 
     private void Locaux_ButtonValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Locaux_ButtonValiderActionPerformed
         // TODO add your handling code here:
+        try{
+            Connexion co = new Connexion();
+            Statement statement = co.connect();
+            
+            String Query = ("UPDATE locaux SET nom = '"+Locaux_TextNom.getText()+"', description = '"+Locaux_TextDescription.getText()+"',lieu = '"+Locaux_TextLieu.getText()+"')");
+            
+            statement.execute(Query);
+            
+            JOptionPane.showMessageDialog(null, "Local modifié");
+            
+             }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, ex.toString());}
     }//GEN-LAST:event_Locaux_ButtonValiderActionPerformed
 
     private void Locaux_ButtonModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Locaux_ButtonModifierActionPerformed
@@ -1648,6 +1685,23 @@ public class Interface extends javax.swing.JFrame {
     private void App_ComboBoxOSItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_App_ComboBoxOSItemStateChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_App_ComboBoxOSItemStateChanged
+
+    private void Salles_ButtonValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Salles_ButtonValiderActionPerformed
+        // TODO add your handling code here:
+        try{
+            Connexion co = new Connexion();
+            Statement statement = co.connect();
+            
+            String Query = ("UPDATE salles SET nom = '"+Salles_TextNom.getText()+"', description = '"+Salles_TextDescription.getText()+"'");
+            
+            statement.execute(Query);
+            
+            JOptionPane.showMessageDialog(null, "Local modifié");
+            
+             }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, ex.toString());}
+    }//GEN-LAST:event_Salles_ButtonValiderActionPerformed
 
     /**
      * @param args the command line arguments
