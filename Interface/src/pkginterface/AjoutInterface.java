@@ -50,7 +50,7 @@ public class AjoutInterface extends javax.swing.JFrame {
         AjoutInt_TextNom = new javax.swing.JTextField();
         AjoutInt_ButtonQuitter = new javax.swing.JButton();
         AjoutInt_TextMAC = new javax.swing.JTextField();
-        AjoutInt_TextEtat = new javax.swing.JTextField();
+        OS_Activation = new javax.swing.JCheckBox();
 
         jFrame1.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -129,7 +129,7 @@ public class AjoutInterface extends javax.swing.JFrame {
             }
         });
 
-        jLabelNomLocalSalle.setText("Etat de l'interface :");
+        jLabelNomLocalSalle.setText("Activation :");
 
         jLabelDescriptionSalle.setText("Adresse MAC :");
 
@@ -153,6 +153,8 @@ public class AjoutInterface extends javax.swing.JFrame {
             }
         });
 
+        OS_Activation.setText("Activer");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -167,17 +169,22 @@ public class AjoutInterface extends javax.swing.JFrame {
                                     .addComponent(jLabelNomSalle)
                                     .addComponent(jLabelDescriptionSalle)
                                     .addComponent(jLabelNomLocalSalle))
-                                .addGap(22, 22, 22)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(AjoutInt_TextNom)
-                                    .addComponent(AjoutInt_ButtonValider, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-                                    .addComponent(AjoutInt_TextMAC)
-                                    .addComponent(AjoutInt_TextEtat)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(22, 22, 22)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(AjoutInt_TextNom)
+                                            .addComponent(AjoutInt_ButtonValider, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+                                            .addComponent(AjoutInt_TextMAC)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(OS_Activation)
+                                        .addGap(46, 46, 46))))
                             .addComponent(jLabelAddSalle)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(AjoutInt_ButtonQuitter)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,7 +202,7 @@ public class AjoutInterface extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelNomLocalSalle)
-                    .addComponent(AjoutInt_TextEtat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(OS_Activation))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(AjoutInt_ButtonValider)
                 .addGap(18, 18, 18)
@@ -215,7 +222,7 @@ public class AjoutInterface extends javax.swing.JFrame {
         // TODO add your handling code here:
         try{
             Connexion co = new Connexion();
-            String Query = "INSERT INTO interfaces (nom, adressemac, etat) VALUES ('"+AjoutInt_TextNom.getText()+"','"+AjoutInt_TextMAC.getText()+"','"+AjoutInt_TextEtat.getText()+"')";
+            String Query = "INSERT INTO interfaces (nom, adressemac, etatInterface) VALUES ('"+AjoutInt_TextNom.getText()+"','"+AjoutInt_TextMAC.getText()+"','"+OS_Activation.isSelected()+"')";
             co.connect().execute(Query);
             
             JOptionPane.showMessageDialog(null, "Interface ajoutée");
@@ -275,9 +282,9 @@ public class AjoutInterface extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AjoutInt_ButtonQuitter;
     private javax.swing.JToggleButton AjoutInt_ButtonValider;
-    private javax.swing.JTextField AjoutInt_TextEtat;
     private javax.swing.JTextField AjoutInt_TextMAC;
     private javax.swing.JTextField AjoutInt_TextNom;
+    private javax.swing.JCheckBox OS_Activation;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelAddLocal;

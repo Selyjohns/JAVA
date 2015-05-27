@@ -656,10 +656,15 @@ public class Interface extends javax.swing.JFrame {
 
         App_TextLocal.setEnabled(false);
 
-        App_ComboBoxOS.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        App_ComboBoxOS.setModel(new DefaultComboBoxModel());
         App_ComboBoxOS.setEnabled(false);
+        App_ComboBoxOS.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                App_ComboBoxOSItemStateChanged(evt);
+            }
+        });
 
-        App_ComboBoxVersion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        App_ComboBoxVersion.setModel(new DefaultComboBoxModel());
         App_ComboBoxVersion.setEnabled(false);
 
         App_ButtonSupprimer.setText("Supprimer l'appareil");
@@ -803,6 +808,11 @@ public class Interface extends javax.swing.JFrame {
         catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
+        Int_List.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                Int_ListValueChanged(evt);
+            }
+        });
         jScrollPane5.setViewportView(Int_List);
 
         Int_ButtonValider.setText("Valider");
@@ -960,6 +970,11 @@ public class Interface extends javax.swing.JFrame {
         jTabbedPane1.addTab("Interfaces", jPanel7);
 
         OS_ListVersion.setModel(new DefaultListModel());
+        OS_ListVersion.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                OS_ListVersionValueChanged(evt);
+            }
+        });
         jScrollPane4.setViewportView(OS_ListVersion);
 
         OS_MenuDeroulant.setModel(new DefaultComboBoxModel());
@@ -1478,14 +1493,34 @@ public class Interface extends javax.swing.JFrame {
             ResultSet rst = co.connect().executeQuery(req);
             rst.next();
             App_TextNom.setText(rst.getString("nom"));
+            
             String reqSalle = "SELECT * FROM salles AS s, appareils AS a WHERE s.idsalle = a.idsalle AND a.idsalle = "+rst.getInt("idsalle")+"";
             ResultSet rstSalle = co.connect().executeQuery(reqSalle);
             rstSalle.next();
             App_TextSalle.setText(rstSalle.getString("nom"));
+            
             String reqLocal = "SELECT l.nom FROM salles AS s, locaux AS l WHERE s.idlocal = l.idlocal AND s.idsalle = "+rstSalle.getInt("idsalle")+"";
             ResultSet rstLocal = co.connect().executeQuery(reqLocal);
             rstLocal.next();
             App_TextLocal.setText(rstLocal.getString("nom"));
+            
+            String reqOS = "SELECT os.nom FROM os, appareils AS a WHERE a.idos = os.idos AND a.nom = '"+((String)App_List.getSelectedValue()).trim()+"'";
+            ResultSet rstOS = co.connect().executeQuery(reqOS);
+            App_ComboBoxOS.setModel(new DefaultComboBoxModel());
+            DefaultComboBoxModel dcbmOS = (DefaultComboBoxModel) App_ComboBoxOS.getModel();
+
+            while(rstOS.next()) {
+                dcbmOS.addElement(rstOS.getString("nom"));
+            }
+            
+            String reqVersionOS = "SELECT os.version FROM os, appareils AS a WHERE a.idos = os.idos AND a.nom = '"+((String)App_List.getSelectedValue()).trim()+"'";
+            ResultSet rstVersionOS = co.connect().executeQuery(reqVersionOS);
+            App_ComboBoxVersion.setModel(new DefaultComboBoxModel());
+            DefaultComboBoxModel dcbmVersionOS = (DefaultComboBoxModel) App_ComboBoxVersion.getModel();
+            
+            while(rstVersionOS.next()) {
+                dcbmVersionOS.addElement(rstVersionOS.getString("version"));
+            }
         }
         catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -1572,6 +1607,47 @@ public class Interface extends javax.swing.JFrame {
             System.out.println(ex.getMessage());
         }
     }//GEN-LAST:event_OS_MenuDeroulantItemStateChanged
+
+    private void OS_ListVersionValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_OS_ListVersionValueChanged
+        // TODO add your handling code here:
+        try {
+            Connexion co = new Connexion();
+            String req = "SELECT * FROM os WHERE version = '"+((String)OS_ListVersion.getSelectedValue()).trim()+"'";
+            ResultSet rst = co.connect().executeQuery(req);
+            rst.next();
+            OS_TextNom.setText(rst.getString("nom"));
+            OS_TextVersion.setText(rst.getString("version"));
+
+        }
+        catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }//GEN-LAST:event_OS_ListVersionValueChanged
+
+    private void Int_ListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_Int_ListValueChanged
+        // TODO add your handling code here:
+        try {
+            Connexion co = new Connexion();
+            String req = "SELECT * FROM interfaces WHERE nom = '"+((String)Int_List.getSelectedValue()).trim()+"'";
+            ResultSet rst = co.connect().executeQuery(req);
+            rst.next();
+            Int_TextNom.setText(rst.getString("nom"));
+            Int_TextMAC.setText(rst.getString("adressemac"));
+            
+            if (rst.getBoolean("etatinterface"))
+                Int_TextEtat.setText("activée");
+             else
+                Int_TextEtat.setText("désactivée");
+
+        }
+        catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }//GEN-LAST:event_Int_ListValueChanged
+
+    private void App_ComboBoxOSItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_App_ComboBoxOSItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_App_ComboBoxOSItemStateChanged
 
     /**
      * @param args the command line arguments

@@ -144,12 +144,20 @@
                                   <Component id="jLabelDescriptionSalle" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabelNomLocalSalle" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="AjoutInt_TextNom" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="AjoutInt_ButtonValider" alignment="0" pref="166" max="32767" attributes="0"/>
-                                  <Component id="AjoutInt_TextMAC" max="32767" attributes="0"/>
-                                  <Component id="AjoutInt_TextEtat" alignment="0" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="AjoutInt_TextNom" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="AjoutInt_ButtonValider" alignment="0" pref="166" max="32767" attributes="0"/>
+                                          <Component id="AjoutInt_TextMAC" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="OS_Activation" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                           <Component id="jLabelAddSalle" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -160,7 +168,7 @@
                       <Component id="AjoutInt_ButtonQuitter" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="32" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -182,7 +190,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabelNomLocalSalle" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="AjoutInt_TextEtat" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="OS_Activation" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="AjoutInt_ButtonValider" min="-2" max="-2" attributes="0"/>
@@ -213,7 +221,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelNomLocalSalle">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Etat de l&apos;interface :"/>
+        <Property name="text" type="java.lang.String" value="Activation :"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelDescriptionSalle">
@@ -242,7 +250,10 @@
     </Component>
     <Component class="javax.swing.JTextField" name="AjoutInt_TextMAC">
     </Component>
-    <Component class="javax.swing.JTextField" name="AjoutInt_TextEtat">
+    <Component class="javax.swing.JCheckBox" name="OS_Activation">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Activer"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
