@@ -348,22 +348,6 @@ public class Interface extends javax.swing.JFrame {
         jTabbedPane1.addTab("Locaux", jPanel1);
 
         Salles_List.setModel(new DefaultListModel());
-        DefaultListModel dlmSalles = (DefaultListModel)Salles_List.getModel();
-        try {
-            Connexion co = new Connexion();
-            Statement statement = co.connect();
-            String req = "SELECT nom FROM salles";
-            ResultSet rst = statement.executeQuery(req);
-
-            while(rst.next())
-            {
-                dlmSalles.addElement(rst.getString("nom"));
-            }
-
-        }
-        catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
         Salles_List.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 Salles_ListValueChanged(evt);
@@ -378,7 +362,7 @@ public class Interface extends javax.swing.JFrame {
             Statement statement = co.connect();
             String req = "SELECT nom FROM locaux";
             ResultSet rst = statement.executeQuery(req);
-
+            dcbmSallesLocaux.addElement("Aucun Local");
             while(rst.next())
             {
                 dcbmSallesLocaux.addElement(rst.getString("nom"));
@@ -388,6 +372,11 @@ public class Interface extends javax.swing.JFrame {
         catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
+        Salles_MenuDeroulantLocaux.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                Salles_MenuDeroulantLocauxItemStateChanged(evt);
+            }
+        });
         Salles_MenuDeroulantLocaux.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Salles_MenuDeroulantLocauxAppActionPerformed(evt);
@@ -559,22 +548,6 @@ public class Interface extends javax.swing.JFrame {
         jTabbedPane1.addTab("Salles", jPanel6);
 
         App_List.setModel(new DefaultListModel());
-        DefaultListModel dlmApp = (DefaultListModel)App_List.getModel();
-        try {
-            Connexion co = new Connexion();
-            Statement statement = co.connect();
-            String req = "SELECT nom FROM appareils";
-            ResultSet rst = statement.executeQuery(req);
-
-            while(rst.next())
-            {
-                dlmApp.addElement(rst.getString("nom"));
-            }
-
-        }
-        catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
         App_List.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 App_ListValueChanged(evt);
@@ -589,7 +562,7 @@ public class Interface extends javax.swing.JFrame {
             Statement statement = co.connect();
             String req = "SELECT nom FROM locaux";
             ResultSet rst = statement.executeQuery(req);
-
+            dcbmAppLocaux.addElement("Aucun Local");
             while(rst.next())
             {
                 dcbmAppLocaux.addElement(rst.getString("nom"));
@@ -599,6 +572,11 @@ public class Interface extends javax.swing.JFrame {
         catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
+        App_MenuDeroulantLocaux.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                App_MenuDeroulantLocauxItemStateChanged(evt);
+            }
+        });
         App_MenuDeroulantLocaux.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 App_MenuDeroulantLocauxAppActionPerformed(evt);
@@ -634,22 +612,11 @@ public class Interface extends javax.swing.JFrame {
         jLabelChoixSalleApp.setText("Sélectionner la salle :");
 
         App_MenuDeroulantSalles.setModel(new DefaultComboBoxModel());
-        DefaultComboBoxModel dcbmAppSalles = (DefaultComboBoxModel)App_MenuDeroulantSalles.getModel();
-        try {
-            Connexion co = new Connexion();
-            Statement statement = co.connect();
-            String req = "SELECT nom FROM salles";
-            ResultSet rst = statement.executeQuery(req);
-
-            while(rst.next())
-            {
-                dcbmAppSalles.addElement(rst.getString("nom"));
+        App_MenuDeroulantSalles.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                App_MenuDeroulantSallesItemStateChanged(evt);
             }
-
-        }
-        catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
+        });
         App_MenuDeroulantSalles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 App_MenuDeroulantSallesAppActionPerformed(evt);
@@ -993,22 +960,6 @@ public class Interface extends javax.swing.JFrame {
         jTabbedPane1.addTab("Interfaces", jPanel7);
 
         OS_ListVersion.setModel(new DefaultListModel());
-        DefaultListModel dlmOS = (DefaultListModel)OS_ListVersion.getModel();
-        try {
-            Connexion co = new Connexion();
-            Statement statement = co.connect();
-            String req = "SELECT version FROM os";
-            ResultSet rst = statement.executeQuery(req);
-
-            while(rst.next())
-            {
-                dlmOS.addElement(rst.getString("version"));
-            }
-
-        }
-        catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
         jScrollPane4.setViewportView(OS_ListVersion);
 
         OS_MenuDeroulant.setModel(new DefaultComboBoxModel());
@@ -1018,7 +969,7 @@ public class Interface extends javax.swing.JFrame {
             Statement statement = co.connect();
             String req = "SELECT nom FROM os";
             ResultSet rst = statement.executeQuery(req);
-
+            dcbmOS.addElement("Aucun OS");
             while(rst.next())
             {
                 dcbmOS.addElement(rst.getString("nom"));
@@ -1028,6 +979,11 @@ public class Interface extends javax.swing.JFrame {
         catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
+        OS_MenuDeroulant.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                OS_MenuDeroulantItemStateChanged(evt);
+            }
+        });
         OS_MenuDeroulant.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 OS_MenuDeroulantAppActionPerformed(evt);
@@ -1490,7 +1446,7 @@ public class Interface extends javax.swing.JFrame {
             rst.next();
             Locaux_TextNom.setText(rst.getString("nom"));
             Locaux_TextLieu.setText(rst.getString("lieu"));
-            Locaux_TextDescription.setText(rst.getString("description"));
+            Locaux_TextDescription.setText(rst.getString("description").trim());
 
         }
         catch (Exception ex) {
@@ -1506,7 +1462,7 @@ public class Interface extends javax.swing.JFrame {
             ResultSet rst = co.connect().executeQuery(req);
             rst.next();
             Salles_TextNom.setText(rst.getString("nom"));
-            Salles_TextDescription.setText(rst.getString("description"));
+            Salles_TextDescription.setText(rst.getString("description").trim());
 
         }
         catch (Exception ex) {
@@ -1535,6 +1491,87 @@ public class Interface extends javax.swing.JFrame {
             System.out.println(ex.getMessage());
         }
     }//GEN-LAST:event_App_ListValueChanged
+
+    private void Salles_MenuDeroulantLocauxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_Salles_MenuDeroulantLocauxItemStateChanged
+        // TODO add your handling code here:
+        try {
+            Connexion co = new Connexion();
+            String req = "SELECT DISTINCT s.nom FROM salles s, locaux l WHERE s.idlocal = (SELECT l.idlocal FROM locaux l WHERE l.nom = '"+((String)Salles_MenuDeroulantLocaux.getSelectedItem()).trim()+"')";
+            ResultSet rst = co.connect().executeQuery(req);
+            
+            Salles_List.setModel(new DefaultListModel());
+            DefaultListModel dlmSallesList = (DefaultListModel) Salles_List.getModel();
+            
+            while(rst.next()) {
+                dlmSallesList.addElement(rst.getString("nom"));
+            }
+
+        }
+        catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }//GEN-LAST:event_Salles_MenuDeroulantLocauxItemStateChanged
+
+    private void App_MenuDeroulantLocauxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_App_MenuDeroulantLocauxItemStateChanged
+        // TODO add your handling code here:
+        try {
+            Connexion co = new Connexion();
+            String req = "SELECT DISTINCT s.nom FROM salles s, locaux l WHERE s.idlocal = (SELECT l.idlocal FROM locaux l WHERE l.nom = '"+((String)App_MenuDeroulantLocaux.getSelectedItem()).trim()+"')";
+            ResultSet rst = co.connect().executeQuery(req);
+            
+            App_MenuDeroulantSalles.setModel(new DefaultComboBoxModel());
+            DefaultComboBoxModel dcbmSallesList = (DefaultComboBoxModel) App_MenuDeroulantSalles.getModel();
+            
+            while(rst.next()) {
+                dcbmSallesList.addElement(rst.getString("nom"));
+            }
+
+        }
+        catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }//GEN-LAST:event_App_MenuDeroulantLocauxItemStateChanged
+
+    private void App_MenuDeroulantSallesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_App_MenuDeroulantSallesItemStateChanged
+        // TODO add your handling code here:
+        try {
+            Connexion co = new Connexion();
+            String req = "SELECT DISTINCT a.nom FROM salles s, appareils a WHERE a.idsalle = (SELECT s.idsalle FROM salles s WHERE s.nom = '"+((String)App_MenuDeroulantSalles.getSelectedItem()).trim()+"')";
+            ResultSet rst = co.connect().executeQuery(req);
+            
+            App_List.setModel(new DefaultListModel());
+            DefaultListModel dlmAppList = (DefaultListModel) App_List.getModel();
+            
+            while(rst.next()) {
+                dlmAppList.addElement(rst.getString("nom"));
+            }
+
+        }
+        catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }//GEN-LAST:event_App_MenuDeroulantSallesItemStateChanged
+
+    private void OS_MenuDeroulantItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_OS_MenuDeroulantItemStateChanged
+        // TODO add your handling code here:
+        OS_ListVersion.setModel(new DefaultListModel());
+        DefaultListModel dlmOS = (DefaultListModel)OS_ListVersion.getModel();
+        try {
+            Connexion co = new Connexion();
+            Statement statement = co.connect();
+            String req = "SELECT DISTINCT version FROM os WHERE nom = '"+((String)OS_MenuDeroulant.getSelectedItem()).trim()+"'";
+            ResultSet rst = statement.executeQuery(req);
+
+            while(rst.next())
+            {
+                dlmOS.addElement(rst.getString("version"));
+            }
+
+        }
+        catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }//GEN-LAST:event_OS_MenuDeroulantItemStateChanged
 
     /**
      * @param args the command line arguments
